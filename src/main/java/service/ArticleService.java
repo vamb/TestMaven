@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.ArticleMapper;
-import module.Article;
+import model.Article;
 
 @Service
 public class ArticleService {

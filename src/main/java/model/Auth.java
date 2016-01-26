@@ -1,4 +1,4 @@
-package module;
+package model;
 
 public class Auth {
 	private Long id;
