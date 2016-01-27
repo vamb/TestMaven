@@ -2,13 +2,21 @@ package model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tbl_article")
 public class Article implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -4446962522821177277L;
-
+	
+	@Id
+//	@GenerateValue(generate="system-uuid")
 	private Long id;
 	
 	private String title;

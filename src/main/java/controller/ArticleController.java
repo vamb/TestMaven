@@ -19,8 +19,8 @@ public class ArticleController {
 	public ArticleService articleService;
 	
 	@RequestMapping(value = "/listArticles")
-	public String HelloWorld(Model model){
-		List<Article> list = articleService.getArticleList();
+	public String HelloWorld(Model model) throws Exception{
+		List<Article> list = articleService.getArticleListJDBC();
 		model.addAttribute("list",list);
 		return "/welcome";
 	}

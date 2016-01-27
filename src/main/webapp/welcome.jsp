@@ -15,5 +15,26 @@ this is my first page.
 	${maps.key} ${maps.value }<br/><br/>
 </c:forEach>
 
+<table border=1>
+<tr>
+	<td>id</td>
+	<td>title</td>
+	<td>content</td>
+	<td>status</td>
+	<td>authId</td>
+	<td>deleted</td>
+</tr>
+<c:forEach var="art" items="${list}">
+<tr>
+	<td>${art.id }</td>
+	<td>${art.title }</td>
+	<td>${art.content }</td>
+	<td>${art.status }</td>
+	<td>${art.authId }</td>
+	<td>${art.deleted }</td>
+</tr>
+</c:forEach>
+
+</table>
 </body>
 </html>
