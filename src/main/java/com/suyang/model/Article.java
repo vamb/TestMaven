@@ -1,32 +1,39 @@
-package model;
+package com.suyang.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="tbl_article")
 public class Article implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4446962522821177277L;
 	
 	@Id
-//	@GenerateValue(generate="system-uuid")
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name = "system-uuid",strategy="uuid")
 	private Long id;
 	
+	@Column(length=32)
 	private String title;
 	
+	@Column
 	private String content;
 	
+	@Column
 	private String status;
 	
+	@Column
 	private Long authId;
 	
+	@Column 
 	private Integer deleted;
 
 	public Long getId() {

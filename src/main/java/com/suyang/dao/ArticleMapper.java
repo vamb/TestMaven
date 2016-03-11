@@ -1,8 +1,8 @@
-package dao;
+package com.suyang.dao;
 
 import java.util.List;
 
-import model.Article;
+import com.suyang.model.Article;
 
 public interface ArticleMapper {
 	

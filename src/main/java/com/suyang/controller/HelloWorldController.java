@@ -1,4 +1,4 @@
-package controller;
+package com.suyang.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,5 +22,20 @@ public class HelloWorldController {
 		return "/welcome";
 	}
 	
+	@RequestMapping(value="/addUser")
+	public String addUser(Model model){
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("actionName", "this is an add user action");
+		model.addAttribute("map", map);
+		return "/welcome";
+	}
+	
+	@RequestMapping("/deleteUser")
+	public String deleteUser(Model model){
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("actionName", "this is a delete user action");
+		model.addAttribute("map",map);
+		return "/welcome";
+	}
 
 }

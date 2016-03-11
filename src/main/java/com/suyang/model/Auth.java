@@ -1,4 +1,4 @@
-package model;
+package com.suyang.model;
 
 public class Auth {
 	private Long id;
