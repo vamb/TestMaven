@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suyang.dao.AuthMapper">
+
+	<resultMap id="baseMap" type="com.suyang.model.Auth">
+		<result column="id" property="id" jdbcType="BIGINT"/>
+		<result column="user_name" property="userName" jdbcType="VARCHAR"/>
+		<result column="nick_name" property="nickName" />
+		<result column="password" property="password" />
+		<result column="avatar" property="avatar" />
+		<result column="status" property="status" />
+	</resultMap>
+
+	<select id="getAuthList" resultMap="baseMap">
+		select * from tbl_auth
+	</select>
+	
+
+</mapper>
