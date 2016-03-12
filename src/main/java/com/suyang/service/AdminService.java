@@ -1,30 +1,28 @@
 package com.suyang.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.suyang.dao.AdminDAOImpl;
+import utils.IDGenerator;
+
+import com.suyang.dao.AdminMapper;
 import com.suyang.model.Admin;
 
 @Service
-public class AdminService implements AdminServiceImpl{
+public class AdminService {
 
-	private AdminDAOImpl adminDAOImpl;
-
-
-	public AdminDAOImpl getAdminDAOImpl() {
-		return adminDAOImpl;
+	@Autowired
+	private AdminMapper adminMapper;
+	
+	public List<Admin> getAdminList(){
+		return adminMapper.getAdminList();
 	}
-
-
-	public void setAdminDAOImpl(AdminDAOImpl adminDAOImpl) {
-		this.adminDAOImpl = adminDAOImpl;
+	
+	public Long addAdmin(Admin admin){
+		admin.setId(IDGenerator.generateId());
+		adminMapper.addAdmin(admin);
+		return admin.getId();
 	}
-
-
-	public void addAdmin(Admin admin) {
-		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
-		adminDAOImpl.addAdmin(admin);
-		
-	}
-
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suyang.dao.AdminMapper">
+
+	<resultMap id="baseMap" type="com.suyang.model.Admin">
+		<result column="id" property="id" jdbcType="BIGINT"/>
+		<result column="name" property="name" jdbcType="VARCHAR"/>
+		<result column="password" property="password" />
+		<result column="level" property="level" />
+	</resultMap>
+
+	<select id="getAdminList" resultMap="baseMap">
+		select * from tbl_admin
+	</select>
+	
+	<insert id="addAdmin">
+          INSERT INTO tbl_admin (
+          	  	 id,name,password)values(#{id},#{name},#{password})
+     	  	   	
+     </insert>
+
+</mapper>

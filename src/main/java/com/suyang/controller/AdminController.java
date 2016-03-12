@@ -11,19 +11,11 @@ import com.suyang.service.AdminService;
 @RequestMapping("/admin")
 public class AdminController {
 	
+	@Autowired
 	private AdminService adminService;
-
-	public AdminService getAdminService() {
-		return adminService;
-	}
-
-	public void setAdminService(AdminService adminService) {
-		this.adminService = adminService;
-	}
 
 	@RequestMapping("/addAdmin")
 	public String addAdmin(Admin admin){
-		AdminService adminService = new AdminService();
 		adminService.addAdmin(admin);
 		return "/welcome";
 	}

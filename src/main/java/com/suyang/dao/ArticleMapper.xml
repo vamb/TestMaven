@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="dao.ArticleMapper">
+<mapper namespace="com.suyang.dao.ArticleMapper">
 
-	<resultMap id="baseMap" type="model.Article">
-		<result column="id" property="id" />
-		<result column="title" property="title" />
+	<resultMap id="baseMap" type="com.suyang.model.Article">
+		<result column="id" property="id" jdbcType="BIGINT"/>
+		<result column="title" property="title" jdbcType="VARCHAR"/>
 		<result column="content" property="content" />
 		<result column="status" property="status" />
-		<result column="auth_id" property="authId" />
+		<result column="auth_id" property="authId" jdbcType="BIGINT"/>
 		<result column="title" property="deleted" />
 	</resultMap>
 

@@ -10,7 +10,7 @@ public class JDBCUtil {
 	
 	public static Connection getConnection() throws Exception{
 		Connection conn = null;
-		String url = "jdbc:mysql://localhost:3306/test?user=root&password=root&useUnicode=true&characterEncoding=UTF8";
+		String url = "jdbc:mysql://localhost:3306/test?user=root&password=vamb&useUnicode=true&characterEncoding=UTF8";
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url);
@@ -23,21 +23,21 @@ public class JDBCUtil {
 	public static void close(ResultSet rs, Statement st,Connection conn){
 		try {
 			if (rs != null) {
-				rs.close(); // ¹Ø±Õ½á¹û¼¯
+				rs.close(); // ï¿½Ø±Õ½ï¿½ï¿½
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				if (st != null) {
-					st.close(); // ¹Ø±ÕStatement
+					st.close(); // ï¿½Ø±ï¿½Statement
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
 				try {
 					if (conn != null) {
-						conn.close(); // ¹Ø±ÕÁ¬½Ó
+						conn.close(); // ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -46,49 +46,4 @@ public class JDBCUtil {
 		}
 	}
 	
-/*	public static void main(String[] args) throws Exception {
-		Connection conn = null;
-		String sql;
-			// MySQLµÄJDBC URL±àĞ´·½Ê½£ºjdbc:mysql://Ö÷»úÃû³Æ£ºÁ¬½Ó¶Ë¿Ú/Êı¾İ¿âµÄÃû³Æ?²ÎÊı=Öµ
-			// ±ÜÃâÖĞÎÄÂÒÂëÒªÖ¸¶¨useUnicodeºÍcharacterEncoding
-			// Ö´ĞĞÊı¾İ¿â²Ù×÷Ö®Ç°ÒªÔÚÊı¾İ¿â¹ÜÀíÏµÍ³ÉÏ´´½¨Ò»¸öÊı¾İ¿â£¬Ãû×Ö×Ô¼º¶¨£¬
-			// ÏÂÃæÓï¾äÖ®Ç°¾ÍÒªÏÈ´´½¨javademoÊı¾İ¿â
-		String url = "jdbc:mysql://localhost:3306/test?user=root&password=root&useUnicode=true&characterEncoding=UTF8";
-		try {
-			// Ö®ËùÒÔÒªÊ¹ÓÃÏÂÃæÕâÌõÓï¾ä£¬ÊÇÒòÎªÒªÊ¹ÓÃMySQLµÄÇı¶¯£¬ËùÒÔÎÒÃÇÒª°ÑËüÇı¶¯ÆğÀ´£¬
-			// ¿ÉÒÔÍ¨¹ıClass.forName°ÑËü¼ÓÔØ½øÈ¥£¬Ò²¿ÉÒÔÍ¨¹ı³õÊ¼»¯À´Çı¶¯ÆğÀ´£¬ÏÂÃæÈıÖÖĞÎÊ½¶¼¿ÉÒÔ
-			Class.forName("com.mysql.jdbc.Driver");// ¶¯Ì¬¼ÓÔØmysqlÇı¶¯
-			// or:
-			// com.mysql.jdbc.Driver driver = new com.mysql.jdbc.Driver();
-			// or£º
-			// new com.mysql.jdbc.Driver();
-			System.out.println("³É¹¦¼ÓÔØMySQLÇı¶¯³ÌĞò");
-			// Ò»¸öConnection´ú±íÒ»¸öÊı¾İ¿âÁ¬½Ó
-			conn = DriverManager.getConnection(url);
-			// StatementÀïÃæ´øÓĞºÜ¶à·½·¨£¬±ÈÈçexecuteUpdate¿ÉÒÔÊµÏÖ²åÈë£¬¸üĞÂºÍÉ¾³ıµÈ
-			Statement stmt = conn.createStatement();
-			sql = "create table student(NO char(20),name varchar(20),primary key(NO))";
-			int result = stmt.executeUpdate(sql);// executeUpdateÓï¾ä»á·µ»ØÒ»¸öÊÜÓ°ÏìµÄĞĞÊı£¬Èç¹û·µ»Ø-1¾ÍÃ»ÓĞ³É¹¦
-			if (result != -1) {
-				System.out.println("´´½¨Êı¾İ±í³É¹¦");
-				sql = "insert into student(NO,name) values('2012001','ÌÕÎ°»ù')";
-				result = stmt.executeUpdate(sql);
-				sql = "insert into student(NO,name) values('2012002','ÖÜĞ¡¿¡')";
-				result = stmt.executeUpdate(sql);
-				sql = "select * from student";
-				ResultSet rs = stmt.executeQuery(sql);// executeQuery»á·µ»Ø½á¹ûµÄ¼¯ºÏ£¬·ñÔò·µ»Ø¿ÕÖµ
-				System.out.println("Ñ§ºÅ\tĞÕÃû");
-				while (rs.next()) {
-				System.out.println(rs.getString(1) + "\t" + rs.getString(2));// ÈëÈç¹û·µ»ØµÄÊÇintÀàĞÍ¿ÉÒÔÓÃgetInt()
-				}
-			}
-		} catch (SQLException e) {
-			System.out.println("MySQL²Ù×÷´íÎó");
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			conn.close();
-		}
-	}*/
 }
