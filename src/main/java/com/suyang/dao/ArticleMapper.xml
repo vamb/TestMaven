@@ -3,12 +3,12 @@
 <mapper namespace="com.suyang.dao.ArticleMapper">
 
 	<resultMap id="baseMap" type="com.suyang.model.Article">
-		<result column="id" property="id" jdbcType="BIGINT"/>
-		<result column="title" property="title" jdbcType="VARCHAR"/>
+		<result column="id" property="id" />
+		<result column="title" property="title" />
 		<result column="content" property="content" />
 		<result column="status" property="status" />
-		<result column="auth_id" property="authId" jdbcType="BIGINT"/>
-		<result column="title" property="deleted" />
+		<result column="auth_id" property="authId" />
+		<result column="deleted" property="deleted" />
 	</resultMap>
 
 	<select id="getArticleList" resultMap="baseMap">
