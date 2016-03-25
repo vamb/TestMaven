@@ -14,9 +14,23 @@
 	</select>
 	
 	<insert id="addAdmin">
-          INSERT INTO tbl_admin (
-          	  	 id,name,password)values(#{id},#{name},#{password})
-     	  	   	
-     </insert>
-
+		INSERT INTO tbl_admin (id,name,password)values(#{id},#{name},#{password})
+	</insert>
+	
+	<update id="updateAdmin" parameterType="com.suyang.model.Admin" >
+		update tbl_admin
+		<set >
+			<if test="name != null" >
+				name = #{name},
+			</if>
+			<if test="password != null" >
+				password = #{password},
+			</if>
+			<if test="level != null" >
+				level = #{level},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
 </mapper>

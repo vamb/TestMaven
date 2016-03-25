@@ -19,4 +19,14 @@ public class AdminController {
 		adminService.addAdmin(admin);
 		return "/welcome";
 	}
+	
+	@RequestMapping("/saveAdmin")
+	public String saveAdmin(Admin admin){
+		if(admin.getId()!=null){
+			adminService.addAdmin(admin);
+		}else{
+			adminService.updateAdmin(admin);
+		}
+		return "/welcome";
+	}
 }

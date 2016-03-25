@@ -9,4 +9,6 @@ public interface AdminMapper {
 	public List<Admin> getAdminList();
 	
 	public Long addAdmin(Admin admin);
+
+	public void updateAdmin(Admin admin);
 }

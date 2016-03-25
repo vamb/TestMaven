@@ -14,7 +14,8 @@
 	
 
 	<!-- 设置使用注解的类所在的jar包 -->
-	<context:component-scan base-package="com.suyang"></context:component-scan>
+	<context:component-scan base-package="com.suyang;Test.controller"></context:component-scan>
+	
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.suyang.dao" />
@@ -25,16 +26,11 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf8" />
 		<property name="username" value="root" />
-		<property name="password" value="vamb" />
+		<property name="password" value="root" />
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-       <!--  <property name="plugins">
-        	<list>
-        		<ref bean="pageSupport"/>
-        	</list>
-        </property> -->
     </bean>
 	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -43,31 +39,11 @@
 	
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 
-	<!-- <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
-        Connection Info
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf8" />
-        <property name="username" value="root" />
-        <property name="password" value="vamb" />
-		<property name="testWhileIdle" value="false"/>
-		<property name="testOnBorrow" value="true"/>
-		<property name="validationQuery" value="select 1"/>
-		<property name="testOnReturn" value="false"/>
-		<property name="validationInterval" value="30000"/>
-		<property name="timeBetweenEvictionRunsMillis" value="30000"/>
-		<property name="initialSize" value="2"/>
-		<property name="maxWait" value="10000"/>
-		<property name="maxActive" value="10"/>
-		<property name="maxIdle" value="10"/>
-		<property name="removeAbandonedTimeout" value="60"/>
-		<property name="minEvictableIdleTimeMillis" value="30000"/>
-		<property name="logAbandoned" value="true"/>
-		<property name="removeAbandoned" value="true"/>
-		<property name="jdbcInterceptors" value="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"/>
-    </bean>
- -->
 	<!-- 完成请求和注解POJO的映射 -->
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	
+	<mvc:resources location="/pages/" mapping="/pages/**"/>
+	<mvc:resources location="/res/" mapping="/res/**"/>
 	
 	<!-- 和下面两个是互相替代关系,主要简化注解配置 -->
 	<mvc:annotation-driven/>

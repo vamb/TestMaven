@@ -25,4 +25,9 @@ public class AdminService {
 		adminMapper.addAdmin(admin);
 		return admin.getId();
 	}
+
+	public void updateAdmin(Admin admin) {
+		adminMapper.updateAdmin(admin);
+		
+	}
 }
