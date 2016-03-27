@@ -3,7 +3,7 @@
 <head>
 <title>index page</title>
 </head>
-<script src="res/js/jquery-1.10.1.min.js"></script>
+<script src="./../res/js/jquery-1.10.1.min.js"></script>
 <body>
 <h2>Hello World!</h2>
 
@@ -51,6 +51,8 @@
 	</p>
 	<input type="button" value="submit" id="authButton"/>
 </form>
+
+<p>=================================</p>
 
 	<script type="text/javascript">
 	$(document).ready(function(){

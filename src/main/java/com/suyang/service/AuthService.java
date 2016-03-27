@@ -18,4 +18,14 @@ public class AuthService {
 	public List<Auth> getAuthList(){
 		return authMapper.getAuthList();
 	}
+
+	public void addAdmin(Auth auth) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateAdmin(Auth auth) {
+		// TODO Auto-generated method stub
+		
+	}
 }
