@@ -1,7 +1,10 @@
 package com.suyang.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.suyang.model.Admin;
@@ -24,5 +27,12 @@ public class AuthController {
 			authService.updateAdmin(auth);
 		}
 		return "/welcome";
+	}
+	
+	@RequestMapping("/authList")
+	public String authLIst(Model model){
+		List<Auth> list = authService.getAuthList();
+		model.addAttribute("list", list);
+		return "/authList";
 	}
 }

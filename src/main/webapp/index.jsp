@@ -7,16 +7,15 @@
 <body>
 <h2>Hello World!</h2>
 
-
 <p>add user form</p>
-<form action="admin/addAdmin" method="post">
-	username:<input type="text" name="name"/><br/>
-	password:<input type="password" name="password"/><br/>
+<form action="./../admin/saveAdmin" method="post">
+	<p>username:<input type="text" name="name"/><br/></p>
+	<p>password:<input type="password" name="password"/><br/></p>
 	<input type="submit" value="submit"/>
 </form>
 <p>========================== </p>
 <p>add article form</p>
-<form action="article/saveArticle" method="post">
+<form action="./../article/saveArticle" method="post">
 	<p>title</p>
 	<p><input type="text" name="title"/></p>
 	<p>content</p>
@@ -35,7 +34,7 @@
 </form>
 <p>========================== </p>
 <p>add auth form</p>
-<form action="auth/saveAuth" method="post" id="authForm">
+<form action="./../auth/saveAuth" method="post" id="authForm">
 	<p>userName</p>
 	<p><input type="text" name="userName" /></p>
 	<p>nickName</p>
@@ -56,7 +55,7 @@
 
 	<script type="text/javascript">
 	$(document).ready(function(){
-		alert("sfsdf");
+		/* alert("sfsdf"); */
 	});
 	</script>
 </body>

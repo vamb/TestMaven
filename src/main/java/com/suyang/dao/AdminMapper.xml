@@ -13,6 +13,14 @@
 		select * from tbl_admin
 	</select>
 	
+	<select id="getAdminByName" resultMap="baseMap" parameterType="java.lang.String">
+		select * from tbl_admin where name = #{name}
+	</select>
+	
+	<select id="getOtherAdminByName" resultMap="baseMap" >
+		select * from tbl_admin where name = #{name} and id!= #{id}
+	</select>
+	
 	<insert id="addAdmin">
 		INSERT INTO tbl_admin (id,name,password)values(#{id},#{name},#{password})
 	</insert>

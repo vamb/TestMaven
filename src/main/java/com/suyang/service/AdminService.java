@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import utils.CreateMD5;
 import utils.IDGenerator;
 
 import com.suyang.dao.AdminMapper;
@@ -22,12 +23,21 @@ public class AdminService {
 	
 	public Long addAdmin(Admin admin){
 		admin.setId(IDGenerator.generateId());
+//		admin.setPassword(CreateMD5.getMd5(admin.getPassword(), admin.getId()));
 		adminMapper.addAdmin(admin);
 		return admin.getId();
 	}
 
 	public void updateAdmin(Admin admin) {
+//		admin.setPassword(CreateMD5.getMd5(admin.getPassword(), admin.getId()));
 		adminMapper.updateAdmin(admin);
-		
+	}
+
+	public Admin getAdminByName(String name) {
+		return adminMapper.getAdminByName(name);
+	}
+
+	public Admin getOtherAdminByName(String name, Long id) {
+		return adminMapper.getOtherAdminByName(name,id);
 	}
 }
