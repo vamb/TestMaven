@@ -40,6 +40,7 @@
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
 	
 	<mvc:resources location="/pages/" mapping="/pages/**"/>
+	<mvc:resources location="/page/" mapping="/page/**"/>
 	<mvc:resources location="/res/" mapping="/res/**"/>
 	
 	<!-- 和下面两个是互相替代关系,主要简化注解配置 -->
@@ -52,5 +53,6 @@
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/"></property>
 		<property name="suffix" value=".jsp"></property>
+		<property name="requestContextAttribute" value="rc" />
 	</bean>
 </beans>

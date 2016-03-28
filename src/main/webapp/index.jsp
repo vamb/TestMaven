@@ -3,7 +3,7 @@
 <head>
 <title>index page</title>
 </head>
-<script src="./../res/js/jquery-1.10.1.min.js"></script>
+<script src="${rc.contextPath}/res/js/jquery-1.10.1.min.js"></script>
 <body>
 <h2>Hello World!</h2>
 
@@ -55,7 +55,7 @@
 
 	<script type="text/javascript">
 	$(document).ready(function(){
-		/* alert("sfsdf"); */
+		alert("sfsdf");
 	});
 	</script>
 </body>
