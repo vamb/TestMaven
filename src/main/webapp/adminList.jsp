@@ -6,9 +6,6 @@
 <body>
 <h2>This is adminList page</h2>
 
-
-
-
 <h3>this is a admin list page. successfully.</h3>
 
 <c:forEach var="maps" items="${map}">

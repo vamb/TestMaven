@@ -55,7 +55,7 @@
 
 	<script type="text/javascript">
 	$(document).ready(function(){
-		alert("sfsdf");
+	/* 	alert("sfsdf"); */
 	});
 	</script>
 </body>
