@@ -51,4 +51,21 @@ public class AdminController {
 		}
 		return "redirect:adminList";
 	}
+	
+	//////////////////////////////////////////////////////////////////
+	
+	@RequestMapping("/loginAdmin")
+	public String loginAdmin(Admin admin,Model model){
+		if(admin.getName()!=null && admin.getPassword()!=null){
+			Admin sysAdmin = adminService.getAdminByName(admin.getName());
+			if(sysAdmin.getPassword().equals(admin.getPassword())){
+				model.addAttribute("success", "登录成功");
+				return "/page/index";
+			}
+		}else{
+			model.addAttribute("error", "用户名或者密码不能为空");
+			return "/page/error";
+		}
+		return null;
+	}
 }

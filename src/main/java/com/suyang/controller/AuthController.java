@@ -30,9 +30,12 @@ public class AuthController {
 	}
 	
 	@RequestMapping("/authList")
-	public String authLIst(Model model){
+	public String authList(Model model){
 		List<Auth> list = authService.getAuthList();
 		model.addAttribute("list", list);
 		return "/authList";
 	}
+	////////////////////////////////////////////////////////////////////////////
+	
+	
 }

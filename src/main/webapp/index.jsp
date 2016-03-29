@@ -1,3 +1,5 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@page contentType="text/html; charset=utf-8" %>
 <html>
 
 <head>
@@ -8,14 +10,14 @@
 <h2>Hello World!</h2>
 
 <p>add user form</p>
-<form action="./../admin/saveAdmin" method="post">
+<form action="${rc.contextPath}/admin/saveAdmin" method="post">
 	<p>username:<input type="text" name="name"/><br/></p>
 	<p>password:<input type="password" name="password"/><br/></p>
 	<input type="submit" value="submit"/>
 </form>
 <p>========================== </p>
 <p>add article form</p>
-<form action="./../article/saveArticle" method="post">
+<form action="${rc.contextPath}/article/saveArticle" method="post">
 	<p>title</p>
 	<p><input type="text" name="title"/></p>
 	<p>content</p>
@@ -34,7 +36,7 @@
 </form>
 <p>========================== </p>
 <p>add auth form</p>
-<form action="./../auth/saveAuth" method="post" id="authForm">
+<form action="${rc.contextPath}/auth/saveAuth" method="post" id="authForm">
 	<p>userName</p>
 	<p><input type="text" name="userName" /></p>
 	<p>nickName</p>

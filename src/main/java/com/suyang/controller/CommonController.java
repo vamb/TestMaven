@@ -12,4 +12,9 @@ public class CommonController {
 	public String index(Model model){
 		return "/index";
 	}
+	
+	@RequestMapping("indexJsp")
+	public String indexJsp(Model model){
+		return "/page/login";
+	}
 }
