@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <!DOCTYPE html>
 <!--[if !IE]><!--> <html lang="zh" class="no-js"> <!--<![endif]-->
 
@@ -13,13 +12,11 @@
 
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-	<meta content='<decorator:getProperty property="description"/>' name="description" />
-
 	<meta content="heinqi" name="author" />
 
 	<link rel="shortcut icon" href="../../res/media/image/favicon.ico" />
 	
-	<decorator:head/>
+	<sitemesh:write property='head'/>
 
 </head>
 
@@ -30,7 +27,7 @@ sfsdfsd
 
 		<div class="page-content">
 			<div class="container-fluid">
-				<decorator:body/>
+				<sitemesh:write property='body'/>
 			</div>
 		</div>
 	</div>
