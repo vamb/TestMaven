@@ -17,4 +17,5 @@ public class CommonController {
 	public String indexJsp(Model model){
 		return "/page/login";
 	}
+	
 }

@@ -40,6 +40,7 @@
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
 	
 	<mvc:resources location="/pages/" mapping="/pages/**"/>
+	<mvc:resources location="/template/" mapping="/template/**"/>
 	<mvc:resources location="/page/" mapping="/page/**"/>
 	<mvc:resources location="/res/" mapping="/res/**"/>
 	
@@ -51,7 +52,6 @@
 
 	<!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/"></property>
 		<property name="suffix" value=".jsp"></property>
 		<property name="requestContextAttribute" value="rc" />
 	</bean>
