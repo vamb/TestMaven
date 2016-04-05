@@ -1,14 +1,18 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <html>
 
 <head>
 <title>index page</title>
 </head>
 <script src="${rc.contextPath}/res/js/jquery-1.10.1.min.js"></script>
+<script src="${rc.contextPath}/res/js/jquery-extends.js"></script>
 <body>
 <h2>Hello World!</h2>
 
+
+<s:message code="hello"/>
 <p>add user form</p>
 <form action="${rc.contextPath}/admin/saveAdmin" method="post">
 	<p>username:<input type="text" name="name"/><br/></p>
@@ -53,12 +57,21 @@
 	<input type="button" value="submit" id="authButton"/>
 </form>
 
+
+<input type="button" value="testButton" id="testButton"/>
 <p>=================================</p>
 
 	<script type="text/javascript">
-	$(document).ready(function(){
-	/* 	alert("sfsdf"); */
-	});
+		$(document).ready(function(){
+/* 			alert("sfsdf"); */
+			var testMessage = "this is the testMessage";
+		});
+		
+		$("#testButton").click(function(){
+/* 			alert("action begin"); */
+			$.msgSuccess("test jQuery extends success");
+		});
+	
 	</script>
 </body>
 </html>
