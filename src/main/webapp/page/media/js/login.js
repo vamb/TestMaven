@@ -91,16 +91,10 @@ var Login = function () {
 	                error.addClass('help-small no-left-padding').insertAfter(element.closest('.input-icon'));
 	            },
 
-	            submitHandler: function (form) {
-	                window.location.href = "index.html";
-	            }
 	        });
 
 	        $('.forget-form input').keypress(function (e) {
 	            if (e.which == 13) {
-	                if ($('.forget-form').validate().form()) {
-	                    window.location.href = "index.html";
-	                }
 	                return false;
 	            }
 	        });
@@ -167,9 +161,6 @@ var Login = function () {
 	                }
 	            },
 
-	            submitHandler: function (form) {
-	                window.location.href = "index.html";
-	            }
 	        });
 
 	        jQuery('#register-btn').click(function () {

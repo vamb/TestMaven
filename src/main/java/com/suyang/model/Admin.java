@@ -1,28 +1,28 @@
 package com.suyang.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="tbl_article")
 public class Admin {
-	@Id
-	@GeneratedValue(generator="system-uuid")
-	@GenericGenerator(name = "system-uuid",strategy="uuid")
+
 	private Long id;
 	
-	@Column
 	private String name;
 	
-	@Column
 	private String password;
 	
 	private Integer level;
+	
+	private String email;
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public Long getId() {
 		return id;
 	}
