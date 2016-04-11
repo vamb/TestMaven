@@ -7,6 +7,7 @@
 	<link type="text/css" rel="stylesheet" href="${rc.contextPath}/page/media/css/bootstrap.min.css" /> 
 	<script src="${rc.contextPath}/res/js/jquery-1.10.1.min.js"></script>
 	<script src="${rc.contextPath}/template/warn_message.js"></script>
+	<input type="hidden" id="hiddenMenu" value = "<sitemesh:write property='meta.menu'/>" >
 	<jsp:include page="import-res.jsp"/>
 	<sitemesh:write property='head'/>
 </head>
@@ -40,9 +41,8 @@
 	
 	<script type="text/javascript">
 		$(function(){
-			var target = '<decorator:getProperty property="meta.menu"/>';
-			var threeLevelMenu=["categoriesList","listProConnection","listpro","activityList","editpro","copypro","addBrand","brandList","ProductType","addShowProduct","showProductType","orderList","orderDetail",
-						"showUpdateMerchantRemark","showUpdatePrice","send","showUpdateBuyAddress","waitSend","addOrders","coupons","couponsShow","discount"];
+			var target = $("#hiddenMenu").val();
+			var threeLevelMenu=["home","listArtilces","editArticle","newArticle","listAuths","editAuth","newAuth","listAdmins","editAdmin","newAdmin"];
 			if(threeLevelMenu.indexOf(target)>-1){
 				$('#'+target).addClass("active").parent('.sub-menu').show().parent('li').addClass("active").find(':first').find('.arrow').addClass("open").parent().parent().parent(".sub-menu").show().parent('li').addClass("active").find(':first').append('<span class="selected"></span>').find('.arrow').addClass("open");
 			}else{

@@ -4,10 +4,11 @@
 <html>
 
 <head>
-<title>index page</title>
+<title>index page root path</title>
 </head>
 <script src="${rc.contextPath}/res/js/jquery-1.10.1.min.js"></script>
 <script src="${rc.contextPath}/res/js/jquery-extends.js"></script>
+<meta name="menu" content="home"/>
 <body>
 <h2>Hello World!</h2>
 

@@ -10,7 +10,7 @@ public class CommonController {
 
 	@RequestMapping("index")
 	public String index(Model model){
-		return "/index";
+		return "/page/index";
 	}
 	
 	@RequestMapping("indexJsp")
