@@ -8,15 +8,15 @@
 	<li>
 		<h3></h3>
 	</li>
-	<li class="start" id="home">
-		<a href="${rc.contextPath}/home">
+	<li class="" type="left" id="home">
+		<a href="${rc.contextPath}/common/index">
 		<i class="icon-home"></i> 
 		<span class="title">首页</span>
 		<span class="selected"></span>
 		</a>
 	</li>
 	
-	<li class="">
+	<li class="" type="left">
 		<a  href="javascript:;">
 			<i class="icon-th-large"></i>
 		<span class="title">文章管理</span>
@@ -35,7 +35,7 @@
 		</ul>
 	</li>
 	
-	<li class="">
+	<li class="" type="left">
 		<a  href="javascript:;">
 			<i class="icon-th-large"></i>
 		<span class="title">作者管理</span>
@@ -54,7 +54,7 @@
 		</ul>
 	</li>
 	
-	<li class="">
+	<li class="" type="left">
 		<a  href="javascript:;">
 			<i class="icon-th-large"></i>
 		<span class="title">管理员管理</span>

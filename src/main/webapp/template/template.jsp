@@ -36,18 +36,26 @@
 	<input type="button" value="infoButton" id="infoButton"/> -->
 
 	<jsp:include page="core-plugin.jsp"/>
-	
 	<jsp:include page="footer.jsp"/>
 	
 	<script type="text/javascript">
 		$(function(){
 			var target = $("#hiddenMenu").val();
-			var threeLevelMenu=["home","listArtilces","editArticle","newArticle","listAuths","editAuth","newAuth","listAdmins","editAdmin","newAdmin"];
+			var threeLevelMenu=["listArtilces","editArticle","newArticle","listAuths","editAuth","newAuth","listAdmins","editAdmin","newAdmin"];
 			if(threeLevelMenu.indexOf(target)>-1){
 				$('#'+target).addClass("active").parent('.sub-menu').show().parent('li').addClass("active").find(':first').find('.arrow').addClass("open").parent().parent().parent(".sub-menu").show().parent('li').addClass("active").find(':first').append('<span class="selected"></span>').find('.arrow').addClass("open");
 			}else{
 				$('#'+target).addClass("active").parent('.sub-menu').show().parent('li').addClass("active").find(':first').append('<span class="selected"></span>').find('.arrow').addClass("open");
 			}
+			$(".page-sidebar-menu").on("click","li",function(){
+				var target = $(this);
+				var list = $("li");
+				var i =0;
+				$.each(list,function(i,val){
+					$(val).attr("class","");
+				});
+				target.attr("class","active");
+			});
 		});
 		
 	/* 	$("#warnButton").click(function(){
