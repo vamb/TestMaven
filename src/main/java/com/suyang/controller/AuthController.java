@@ -19,23 +19,19 @@ public class AuthController {
 	@Autowired
 	private AuthService authService;
 	
-	@RequestMapping("/saveAuth")
-	public String saveAdmin(Auth auth){
-		if(auth.getId()!=null){
-			authService.addAdmin(auth);
-		}else{
-			authService.updateAdmin(auth);
-		}
-		return "/welcome";
+	@RequestMapping(value = "/listAuths")
+	public String listAuths(Model model){
+		return "/page/auth/listAuths";
 	}
 	
-	@RequestMapping("/authList")
-	public String authList(Model model){
-		List<Auth> list = authService.getAuthList();
-		model.addAttribute("list", list);
-		return "/authList";
+	@RequestMapping(value = "/editAuth")
+	public String editAuth(Model model){
+		return "/page/auth/editAuth";
 	}
-	////////////////////////////////////////////////////////////////////////////
 	
+	@RequestMapping(value = "/newAuth")
+	public String newAuth(Model model){
+		return "/page/auth/newAuth";
+	}
 	
 }

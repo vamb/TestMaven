@@ -19,12 +19,20 @@ public class ArticleController {
 	public ArticleService articleService;
 	
 	@RequestMapping(value = "/listArticles")
-	public String HelloWorld(Model model) throws Exception{
-//		List<Article> list = articleService.getArticleListJDBC();
+	public String listArticles(Model model){
 		List<Article> list = articleService.getAtriclesByMybatis();
 		model.addAttribute("list",list);
-		return "/welcome";
+		return "/page/article/listArticles";
 	}
 	
-
+	@RequestMapping(value = "/editArticle")
+	public String editArticle(Model model){
+		return "/page/article/editArticle";
+	}
+	
+	@RequestMapping(value = "newArticle")
+	public String newArticle(Model model){
+		return "/page/article/newArticle";
+	}
+	
 }

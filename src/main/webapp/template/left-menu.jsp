@@ -65,7 +65,7 @@
 				<a href="${rc.contextPath}/admin/listAdmins">管理员列表</a>
 			</li>
 			<li id="editAdmin">
-				<a href="${rc.contextPath}/Admin/editAdmin">编辑管理员</a>
+				<a href="${rc.contextPath}/admin/editAdmin">编辑管理员</a>
 			</li>
 			<li id="newAdmin">
 				<a href="${rc.contextPath}/auth/newAdmin">添加管理员</a>

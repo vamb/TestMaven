@@ -17,18 +17,24 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 
-	@RequestMapping("/adminList")
+	@RequestMapping("/listAdmins")
 	public String adminList(Model model){
-		List<Admin> list = adminService.getAdminList();
-		model.addAttribute("list", list);
-		return "/adminList";
+//		List<Admin> list = adminService.getAdminList();
+//		model.addAttribute("list", list);
+		return "/page/admin/listAdmins";
 	}
 	
-	@RequestMapping("/addAdmin")
-	public String addAdmin(Admin admin){
-		adminService.addAdmin(admin);
-		return "/welcome";
+	@RequestMapping("/editAdmin")
+	public String addAdmin(Admin admin,Model model){
+//		adminService.addAdmin(admin);
+		return "/page/admin/editAdmin";
 	}
+	
+	@RequestMapping("/newAdmin")
+	public String newAdmin(Model model){
+		return "page/admin/newAdmin";
+	}
+	
 	
 	@RequestMapping("/saveAdmin")
 	public String saveAdmin(Admin admin,Model model){
@@ -52,20 +58,4 @@ public class AdminController {
 		return "redirect:adminList";
 	}
 	
-	//////////////////////////////////////////////////////////////////
-	
-	@RequestMapping("/loginAdmin")
-	public String loginAdmin(Admin admin,Model model){
-		if(admin.getName()!=null && admin.getPassword()!=null){
-			Admin sysAdmin = adminService.getAdminByName(admin.getName());
-			if(sysAdmin.getPassword().equals(admin.getPassword())){
-				model.addAttribute("success", "登录成功");
-				return "/page/index";
-			}
-		}else{
-			model.addAttribute("error", "用户名或者密码不能为空");
-			return "/page/error";
-		}
-		return null;
-	}
 }
