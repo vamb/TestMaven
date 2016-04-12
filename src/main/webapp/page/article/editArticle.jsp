@@ -3,13 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<head>
-<title>editArticle</title>
-</head>
-<meta name="menu" content="editArticle"/>
-<body>
-<body>
-<h2>welcome to editArticle page</h2>
-
-</body>
+	<head>
+		<title>editArticle</title>
+	</head>
+	<meta name="menu" content="editArticle"/>
+	
+	<body>
+		<h2>welcome to editArticle page</h2>
+		
+	</body>
 </html>

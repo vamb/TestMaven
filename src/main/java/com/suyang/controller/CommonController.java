@@ -18,4 +18,9 @@ public class CommonController {
 		return "/page/login";
 	}
 	
+	@RequestMapping("ueditor")
+	public String ueditor(){
+		return "/ueditor/index";
+	}
+	
 }

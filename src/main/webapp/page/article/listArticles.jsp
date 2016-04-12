@@ -31,7 +31,7 @@
 				<div class="portlet-title">
 					<div class="caption">
 						<i class="icon-comments"></i>
-						Striped Table
+						Table
 					</div>
 					<div class="tools">
 						<a class="collapse" href="javascript:;"></a>
@@ -50,6 +50,7 @@
 							<th class="hidden-480">Status</th>
 							<th>AuthId</th>
 							<th>Deleted</th>
+							<th>Option</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -61,6 +62,10 @@
 								<td>${art.status }</td>
 								<td>${art.authId }</td>
 								<td>${art.deleted }</td>
+								<td>
+									<span><a class="tableModify" href="#">modify</a></span>
+									<span><a class="tableDelete" href="#">delete</a></span>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -69,4 +74,12 @@
 			</div>
 		</div>
 	</body>
+	
+	<script type="text/javascript">
+	 
+		$(document).ready(function(){
+			alert("sdfs");
+		});
+	
+	</script>
 </html>
