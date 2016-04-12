@@ -32,7 +32,7 @@ public class AdminController {
 	
 	@RequestMapping("/newAdmin")
 	public String newAdmin(Model model){
-		return "page/admin/newAdmin";
+		return "/page/admin/newAdmin";
 	}
 	
 	
