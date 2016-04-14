@@ -23,4 +23,9 @@ public class CommonController {
 		return "/ueditor/index";
 	}
 	
+	@RequestMapping("testUED")
+	public String testUED(){
+		return "/ueditor/NewFile";
+	}
+	
 }

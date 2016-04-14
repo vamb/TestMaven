@@ -11,5 +11,29 @@
 	<body>
 		<h2>welcome to editArticle page</h2>
 		
+		<div class="portlet">
+			<div class="portlet-title">
+				this is title
+			</div>
+			<div class="portlet-body">
+				<div class="row-fluid">
+					<div class="span3">
+						body 1
+					</div>
+					<div class="span3">
+						body 2
+					</div>
+					<div class="span3">
+						body 3
+					</div>
+					<div class="span3">
+						body 3
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
 	</body>
 </html>
