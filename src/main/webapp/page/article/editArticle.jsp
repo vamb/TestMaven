@@ -13,7 +13,9 @@
 		
 		<div class="portlet">
 			<div class="portlet-title">
-				this is title
+				<c:if test="${not empty article}">
+					${article.title }
+				</c:if>
 			</div>
 			<div class="portlet-body">
 				<div class="row-fluid">

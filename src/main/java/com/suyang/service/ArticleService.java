@@ -3,13 +3,11 @@ package com.suyang.service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.suyang.dao.ArticleMapper;
 import com.suyang.model.Article;
@@ -77,5 +75,9 @@ public class ArticleService {
 	
 	public List<Article> getAtriclesByMybatis(){
 		return articleMapper.getArticleList();
+	}
+	
+	public Article getArticleById(Long id){
+		return articleMapper.getArticleById(id);
 	}
 }

@@ -12,7 +12,11 @@
 	</resultMap>
 
 	<select id="getArticleList" resultMap="baseMap">
-		select * from tbl_article
+		SELECT * FROM tbl_article WHERE deleted = 0
+	</select>
+	
+	<select id="getArticleById" resultMap="baseMap">
+		SELECT * FROM tbl_article WHERE id = #{id} AND deleted = 0
 	</select>
 
 </mapper>

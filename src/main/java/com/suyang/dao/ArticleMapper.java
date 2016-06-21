@@ -8,5 +8,5 @@ public interface ArticleMapper {
 	
 	public List<Article> getArticleList();
 	
-	public String getArticleTitleById(Long id);
+	public Article getArticleById(Long id);
 }
