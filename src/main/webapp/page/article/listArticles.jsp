@@ -62,15 +62,15 @@
 								<td>${art.authId }</td>
 								<td>${art.deleted }</td>
 								<td>
-									<span><a class="tableModify" attrId="${art.id }" href="#">modify</a></span>
+									<span><a class="tableModify" attrId="${art.id }" href="javascript:void(0)">modify</a></span>
 									<span>|</span>
-									<span><a class="tableDelete" attrId="${art.id }" href="#">delete</a></span>
+									<span><a class="tableDelete" attrId="${art.id }" href="javascript:void(0)">delete</a></span>
 								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-				<form id="hiddenForm" action="" method="POST">
+				<form id="hiddenForm" action="" method="post">
 					<input type="hidden" id="hiddenId" name="id" value="" />
 				</form>
 			</div>
@@ -82,17 +82,15 @@
 		});
 		
 		$(".tableModify").click(function(){
-			var obj = $(this);
-			$("#hiddenId").val(obj.attr("attrId"));
-			$("#hiddenForm").attr("href","${rc.contextPath}/article/editArticle");
-			$("#hiddenForm")[0].click();
+			$("#hiddenId").val($(this).attr("attrId"));
+			$("#hiddenForm").attr("action","${rc.contextPath}/article/editArticle");
+			$("#hiddenForm").submit();
 		});
 		
 		$(".tableDelete").click(function(){
-			alert("DeleteAction    "+$(this).attr("attrId"));
 			$("#hiddenId").val($(this).attr("attrId"));
-			$("#hiddenForm").attr("href","${rc.contextPath}/article/delete");
-			$("#hiddenForm")[0].click();
+			$("#hiddenForm").attr("action","${rc.contextPath}/article/delete");
+			$("#hiddenForm").submit();
 		});
 		
 	</script>

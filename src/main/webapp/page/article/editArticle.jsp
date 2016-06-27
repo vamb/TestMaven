@@ -21,21 +21,23 @@
 				<div class="row-fluid">
 					<div class="span3">
 						body 1
+						${article.title}
 					</div>
 					<div class="span3">
 						body 2
+						${article.content}
 					</div>
 					<div class="span3">
 						body 3
+						${article.authId}
 					</div>
 					<div class="span3">
 						body 3
+						${article.status}
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		
 		
 	</body>
 </html>

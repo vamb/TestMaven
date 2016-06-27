@@ -80,4 +80,9 @@ public class ArticleService {
 	public Article getArticleById(Long id){
 		return articleMapper.getArticleById(id);
 	}
+
+	public void deleteArticle(Long artId) {
+		articleMapper.logicDelete(artId);
+		
+	}
 }
