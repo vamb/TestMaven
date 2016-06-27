@@ -41,9 +41,4 @@
 		where id = #{id}
 	</update>
 	
-	<update id="logicDelete" >
-		update tbl_admin
-		set deleted = 1
-		where id = #{artId}
-	</update>
 </mapper>

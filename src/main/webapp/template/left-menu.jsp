@@ -26,12 +26,6 @@
 			<li id="listArtilces">
 				<a href="${rc.contextPath}/article/listArticles">文章列表</a>
 			</li>
-			<li id="editArticle">
-				<a href="${rc.contextPath}/article/editArticle">编辑文章</a>
-			</li>
-			<li id="newArticle">
-				<a href="${rc.contextPath}/article/newArticle">添加文章</a>
-			</li>
 		</ul>
 	</li>
 	

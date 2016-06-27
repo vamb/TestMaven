@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.suyang.model.Article;
 import com.suyang.service.ArticleService;
@@ -27,7 +26,7 @@ public class ArticleController {
 		return "/page/article/listArticles";
 	}
 	
-	@RequestMapping(value = "/editArticle", method = RequestMethod.POST)
+	@RequestMapping(value = "/editArticle")
 	public String editArticle(Model model,Article article){
 		if(article!=null && !StringUtils.isEmpty(article.getId())){
 			article = articleService.getArticleById(article.getId());
@@ -42,8 +41,10 @@ public class ArticleController {
 	}
 	
 	@RequestMapping(value = "/delete")
-	public String deleteArticle(Model model, Long artId){
-		articleService.deleteArticle(artId);
+	public String deleteArticle(Model model, Article article){
+		articleService.deleteArticle(article.getId());
+		List<Article> list = articleService.getAtriclesByMybatis();
+		model.addAttribute("list",list);
 		return "/page/article/listArticles";
 	}
 	

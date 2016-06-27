@@ -6,10 +6,32 @@
 	<head>
 		<title>editArticle</title>
 	</head>
-	<meta name="menu" content="editArticle"/>
+	<meta name="menu" content="listArtilces"/>
 	
 	<body>
 		<h2>welcome to editArticle page</h2>
+		
+		<ul class="breadcrumb">
+			<li>
+				<i class="icon-home"></i>
+				<a href="${rc.contextPath}/common/index">Home</a>
+				<i class="icon-angle-right"></i>
+			</li>
+			<li>
+				<a href="${rc.contextPath}/article/listArticles">Article List</a>
+				<i class="icon-angle-right"></i>
+			</li>
+			<li>
+				<a href="${rc.contextPath}/article/editArticle">
+					<if test="${not empty article}">
+					edit article
+					</if>
+					<if test="${empty article}">
+					new article
+					</if>
+				</a>
+			</li>
+		</ul>
 		
 		<div class="portlet">
 			<div class="portlet-title">
@@ -20,19 +42,15 @@
 			<div class="portlet-body">
 				<div class="row-fluid">
 					<div class="span3">
-						body 1
 						${article.title}
 					</div>
 					<div class="span3">
-						body 2
 						${article.content}
 					</div>
 					<div class="span3">
-						body 3
 						${article.authId}
 					</div>
 					<div class="span3">
-						body 3
 						${article.status}
 					</div>
 				</div>

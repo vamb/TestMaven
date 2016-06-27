@@ -19,4 +19,9 @@
 		SELECT * FROM tbl_article WHERE id = #{id} AND deleted = 0
 	</select>
 
+	<update id="logicDelete" >
+		update tbl_article
+		set deleted = 1
+		where id = #{artId}
+	</update>
 </mapper>
