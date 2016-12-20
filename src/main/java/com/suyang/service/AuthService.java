@@ -28,4 +28,8 @@ public class AuthService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public Auth getAuthById(Long authId) {
+		return authMapper.getAuthById(authId);
+	}
 }

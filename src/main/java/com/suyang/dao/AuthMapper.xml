@@ -15,5 +15,9 @@
 		select * from tbl_auth
 	</select>
 	
+	<select id="getAuthById" resultMap="baseMap">
+		select * from tbl_auth where id = #{authId}
+	</select>
+	
 
 </mapper>

@@ -27,7 +27,7 @@ public class ArticleController {
 	}
 	
 	@RequestMapping(value = "/editArticle")
-	public String editArticle(Model model,Article article){
+	public String editArticle(Model model, Article article){
 		if(article!=null && !StringUtils.isEmpty(article.getId())){
 			article = articleService.getArticleById(article.getId());
 			model.addAttribute("article", article);

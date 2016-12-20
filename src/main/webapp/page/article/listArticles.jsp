@@ -76,24 +76,24 @@
 			</div>
 			</div>
 		</div>
-	<script type="text/javascript">
-		$(document).ready(function(){
+		<script type="text/javascript">
+			$(document).ready(function(){
+				
+			});
 			
-		});
-		
-		$(".tableModify").click(function(){
-			$("#hiddenId").val($(this).attr("attrId"));
-			$("#hiddenForm").attr("action","${rc.contextPath}/article/editArticle");
-			$("#hiddenForm").submit();
-		});
-		
-		$(".tableDelete").click(function(){
-			$("#hiddenId").val($(this).attr("attrId"));
-			$("#hiddenForm").attr("action","${rc.contextPath}/article/delete");
-			$("#hiddenForm").submit();
-		});
-		
-	</script>
+			$(".tableModify").click(function(){
+				$("#hiddenId").val($(this).attr("attrId"));
+				$("#hiddenForm").attr("action","${rc.contextPath}/article/editArticle");
+				$("#hiddenForm").submit();
+			});
+			
+			$(".tableDelete").click(function(){
+				$("#hiddenId").val($(this).attr("attrId"));
+				$("#hiddenForm").attr("action","${rc.contextPath}/article/delete");
+				$("#hiddenForm").submit();
+			});
+			
+		</script>
 	
 	</body>
 	

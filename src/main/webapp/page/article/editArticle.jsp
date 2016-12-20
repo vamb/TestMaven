@@ -9,7 +9,7 @@
 	<meta name="menu" content="listArtilces"/>
 	
 	<body>
-		<h2>welcome to editArticle page</h2>
+		<h3 class="page-title">welcome to editArticle page</h2>
 		
 		<ul class="breadcrumb">
 			<li>
@@ -22,7 +22,8 @@
 				<i class="icon-angle-right"></i>
 			</li>
 			<li>
-				<a href="${rc.contextPath}/article/editArticle">
+				<%-- <a href="${rc.contextPath}/article/editArticle"> --%>
+				<a href="javascript:void(0)" onclick="loadCurrend()">
 					<if test="${not empty article}">
 					edit article
 					</if>
@@ -57,5 +58,15 @@
 			</div>
 		</div>
 		
+		<form id="hiddenForm" style="display:none;" action="">
+			<input type="hidden" name="id" value="${article.id }" />
+		</form>
+		
+		<script type="text/javascript">
+			function loadCurrend(){
+				$("#hiddenForm").attr("action", "${rc.contextPath}/article/editArticle");
+				$("#hiddenForm").submit();
+			}
+		</script>
 	</body>
 </html>
