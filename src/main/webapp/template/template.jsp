@@ -10,6 +10,11 @@
 	<input type="hidden" id="hiddenMenu" value = "<sitemesh:write property='meta.menu'/>" >
 	<jsp:include page="import-res.jsp"/>
 	<sitemesh:write property='head'/>
+	<style type="text/css">
+		body{
+			font-family:Microsoft YaHei;
+		}
+	</style>
 </head>
 <body class="page-header-fixed">
 	<jsp:include page="header.jsp"/>
@@ -29,12 +34,6 @@
 		</div>
 	</div>
 	
-<!-- demo关于提示消息 -->
-<!-- 	<input type="button" value="warnButton" id="warnButton"/>
-	<input type="button" value="errorButton" id="errorButton"/>
-	<input type="button" value="successButton" id="successButton"/>
-	<input type="button" value="infoButton" id="infoButton"/> -->
-
 	<jsp:include page="core-plugin.jsp"/>
 	<jsp:include page="footer.jsp"/>
 	

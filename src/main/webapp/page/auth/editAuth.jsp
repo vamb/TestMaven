@@ -20,7 +20,7 @@
 	</style>
 	
 </head>
-<meta name="menu" content="editAuth"/>
+<meta name="menu" content="listAuths"/>
 
 	<body>
 		<h3 class="page-title">welcome to editAuth page</h2>
@@ -32,24 +32,23 @@
 				<i class="icon-angle-right"></i>
 			</li>
 			<li>
-				<a href="${rc.contextPath}/auth/listAuths">Article List</a>
+				<a href="${rc.contextPath}/auth/listAuths">Auth List</a>
 				<i class="icon-angle-right"></i>
 			</li>
 			<li>
 				<a href="javascript:void(0)" onclick="loadCurrend()">
-					<if test="${not empty auth}">
+					<c:if test="${not empty auth.id }">
 					edit auth
-					</if>
-					<if test="${empty auth}">
+					</c:if>
+					<c:if test="${empty auth.id }">
 					new auth
-					</if>
+					</c:if>
 				</a>
 			</li>
 		</ul>
-		
-		<form style="width:100%" role="form">
-			
-			<div style="width:100%; margin-bottom:20px;height:30px;">
+		<span id="backId" style="display:none;" >${auth.id }</span>
+		<form id="inputForm" style="width:100%" role="form">
+			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
 					<div style="">userName:</div>
 				</div>
@@ -60,7 +59,7 @@
 				</div>
 			</div>
 			
-			<div style="width:100%; margin-bottom:20px;height:30px;">
+			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
 					<div style="">nickName:</div>
 				</div>
@@ -71,18 +70,29 @@
 				</div>
 			</div>
 			
-			<div style="width:100%; margin-bottom:20px;height:30px;">
+			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
 					<div style="">password:</div>
 				</div>
 				<div style="width:50px;float:left;text-algin:left;">
 					<div style="">
-						<input type="text" name="" value="${auth.password }" id="" />
+						<input type="text" name="" value="${auth.password }" id="" onchange="passCheck(this)"/>
 					</div>
 				</div>
 			</div>
 			
-			<div style="width:100%; margin-bottom:20px;height:30px;">
+				<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
+				<div class="self_label">
+					<div style="">confirm pass:</div>
+				</div>
+				<div style="width:50px;float:left;text-algin:left;">
+					<div style="">
+						<input type="text" name="" value="" id="" onchange="confirmCheck(this)"/>
+					</div>
+				</div>
+			</div>
+			
+			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
 					<div style="">avatar:</div>
 				</div>
@@ -93,7 +103,7 @@
 				</div>
 			</div>
 			
-			<div style="width:100%; margin-bottom:20px;height:30px;">
+			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
 					<div style="">status:</div>
 				</div>
@@ -104,7 +114,7 @@
 				</div>
 			</div>
 			
-			<div style="width:100%; margin-bottom:20px;height:30px;">
+			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
 					<div style="">email:</div>
 				</div>
@@ -114,13 +124,48 @@
 					</div>
 				</div>
 			</div>
-			
 		</form>
 		
+		<div style="width:100%;height:100px;background-color:#efefef;margin-top:30px;">
+			<div style="width:100%;line-height:80px;margin-top:20px;height:80px;">
+				<button type="button" style="margin-left:20px;" onclick="submitAction()" class="btn btn-primary">submit</button>
+				<button type="button" style="margin-left:20px;" onclick="resetAction()" class="btn btn-primary">reset</button>
+				<button type="button" style="margin-left:20px;" onclick="cancelAction()" class="btn btn-primary">cancel</button>
+			</div>
+		</div>
+		
+		<form id="hiddenForm" action="" method="post">
+			<input type="hidden" id="hiddenId" name="id" value="${auth.id }" />
+		</form>
 		<script type="text/javascript">
 			
 			function loadCurrend(){
-				alert("loadCurrend start");
+				$("#hiddenForm").attr("action", "${rc.contextPath}/auth/editAuth");
+				$("#hiddenForm").submit();
+			}
+			
+			function submitAction(){
+				$("#inputForm").attr("action", "${rc.contextPath}/auth/saveAuth");
+				$("#inputForm").submit();
+			}
+			
+			function resetAction(){
+				$("#hiddenId").val($("#backId").text());
+				$("#hiddenForm").attr("action", "${rc.contextPath}/auth/editAuth");
+				$("#hiddenForm").submit();
+			}
+			
+			function cancelAction(){
+				$("#inputForm").attr("action", "${rc.contextPath}/auth/listAuths");
+				$("#inputForm").submit();
+			}
+			
+			function passCheck(obj){
+				
+			}
+			
+			function confirmCheck(obj){
+				
 			}
 			
 		</script>

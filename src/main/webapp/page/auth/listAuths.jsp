@@ -21,6 +21,12 @@
 				<a href="${rc.contextPath}/auth/listAuths">Auth List</a>
 			</li>
 		</ul>
+		
+		<div style="width:100%;margin-bottom:10px;">
+			<div  style="margin-left:30px;">
+				<a href="javascript:void(0)" onclick="newAuth()"><span>Add New</span></a>
+			</div>
+		</div>
 
 		<div class="span6">
 			<div class="portlet box green">
@@ -73,9 +79,6 @@
 				</div>
 			</div>
 		</div>
-		<form id="hiddenForm" action="" style="display:none;" method="post">
-			<input type="hidden" value="" id="hiddenId" name="id"/>
-		</form>
 		<script type="text/javascript">
 			
 			$(document).ready(function(){
@@ -90,7 +93,13 @@
 			
 			function deleteAuth(authId){
 				$("#hiddenId").val(authId);
-				$("#hiddenForm").attr("action","${rc.contextPath}/auth/auth/deleteAuth");
+				$("#hiddenForm").attr("action","${rc.contextPath}/auth/deleteAuth");
+				$("#hiddenForm").submit();
+			}
+			
+			function newAuth(){
+				$("#hiddenId").val("");
+				$("#hiddenForm").attr("action","${rc.contextPath}/auth/editAuth");
 				$("#hiddenForm").submit();
 			}
 			

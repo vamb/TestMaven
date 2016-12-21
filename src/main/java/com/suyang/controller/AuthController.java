@@ -29,9 +29,22 @@ public class AuthController {
 	public String editAuth(Model model, Auth auth){
 		if(auth != null && auth.getId() != null){
 			auth = authService.getAuthById(auth.getId());
-			model.addAttribute("auth", auth);
 		}
+		model.addAttribute("auth", auth);
 		return "/page/auth/editAuth";
+	}
+	
+	@RequestMapping(value = "/saveAuth")
+	public String saveAuth(Model model, Auth auth){
+		if(auth != null && auth.getId() != null){
+			authService.insertAuth(auth);
+			return "/page/auth/editAuth";
+		}else{
+			authService.updateAuth(auth);
+			List<Auth> list = authService.getAuthList();
+			model.addAttribute("list",list);
+			return "/page/auth/listAuths";
+		}
 	}
 	
 	@RequestMapping(value = "/newAuth")
@@ -41,6 +54,7 @@ public class AuthController {
 	
 	@RequestMapping(value = "/deleteAuth")
 	public String deleteAuth(Model model, Auth auth){
+		
 		return "/page/auth/editAuth";
 	}
 	

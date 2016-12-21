@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.suyang.dao.AuthMapper;
 import com.suyang.model.Auth;
 
+import utils.IDGenerator;
+
 
 @Service
 public class AuthService {
@@ -31,5 +33,14 @@ public class AuthService {
 
 	public Auth getAuthById(Long authId) {
 		return authMapper.getAuthById(authId);
+	}
+
+	public void insertAuth(Auth auth) {
+		auth.setId(IDGenerator.generateId());
+	}
+
+	public void updateAuth(Auth auth) {
+		// TODO Auto-generated method stub
+		
 	}
 }

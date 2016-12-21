@@ -24,8 +24,15 @@
 				<a href="${rc.contextPath}/article/listArticles">Article List</a>
 			</li>
 		</ul>
-
+		
+		<div style="width:100%;margin-bottom:10px;">
+			<div  style="margin-left:30px;">
+				<a href="javascript:void(0)" onclick="newArticle()"><span>Add New</span></a>
+			</div>
+		</div>
+		
 		<div class="span6">
+		
 			<div class="portlet box green">
 				<div class="portlet-title">
 					<div class="caption">
@@ -89,9 +96,15 @@
 			
 			$(".tableDelete").click(function(){
 				$("#hiddenId").val($(this).attr("attrId"));
-				$("#hiddenForm").attr("action","${rc.contextPath}/article/delete");
+				$("#hiddenForm").attr("action","${rc.contextPath}/article/deleteAuth");
 				$("#hiddenForm").submit();
 			});
+			
+			function newArticle(){
+				$("#hiddenId").val("");
+				$("#hiddenForm").attr("action","${rc.contextPath}/article/editArticle");
+				$("#hiddenForm").submit();
+			}
 			
 		</script>
 	

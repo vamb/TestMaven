@@ -22,14 +22,13 @@
 				<i class="icon-angle-right"></i>
 			</li>
 			<li>
-				<%-- <a href="${rc.contextPath}/article/editArticle"> --%>
 				<a href="javascript:void(0)" onclick="loadCurrend()">
-					<if test="${not empty article}">
+					<c:if test="${not empty article.id}">
 					edit article
-					</if>
-					<if test="${empty article}">
+					</c:if>
+					<c:if test="${empty article.id}">
 					new article
-					</if>
+					</c:if>
 				</a>
 			</li>
 		</ul>

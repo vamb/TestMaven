@@ -39,12 +39,12 @@
 			<li id="listAuths">
 				<a href="${rc.contextPath}/auth/listAuths">作者列表</a>
 			</li>
-			<li id="editAuth">
+		<%-- 	<li id="editAuth">
 				<a href="${rc.contextPath}/auth/editAuth">编辑作者</a>
 			</li>
 			<li id="newAuth">
 				<a href="${rc.contextPath}/auth/newAuth">添加作者</a>
-			</li>
+			</li> --%>
 		</ul>
 	</li>
 	
