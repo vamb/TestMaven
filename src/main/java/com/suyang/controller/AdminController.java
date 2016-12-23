@@ -1,5 +1,7 @@
 package com.suyang.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +19,8 @@ public class AdminController {
 
 	@RequestMapping("/listAdmins")
 	public String adminList(Model model){
-//		List<Admin> list = adminService.getAdminList();
-//		model.addAttribute("list", list);
+		/*List<Admin> list = adminService.getAdminList();
+		model.addAttribute("list", list);*/
 		return "/page/admin/listAdmins";
 	}
 	
