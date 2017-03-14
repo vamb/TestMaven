@@ -14,6 +14,9 @@
 		body{
 			font-family:Microsoft YaHei;
 		}
+		.page-content{
+			/* min-height:500px !important;   */
+		}
 	</style>
 </head>
 <body class="page-header-fixed">
@@ -27,7 +30,7 @@
 
 		<jsp:include page="core-plugin.jsp"/>
 
-		<div class="page-content">
+		<div class="page-content" >
 			<div class="container-fluid">
 				<sitemesh:write property='body'/>
 			</div>
@@ -40,7 +43,7 @@
 	<script type="text/javascript">
 		$(function(){
 			var target = $("#hiddenMenu").val();
-			var threeLevelMenu=["listArtilces","editArticle","newArticle","listAuths","editAuth","newAuth","listAdmins","editAdmin","newAdmin"];
+			var threeLevelMenu=["listArtilces","editArticle","newArticle","listAuths","editAuth","newAuth","listAdmins","editAdmin","newAdmin","listSurveys"];
 			if(threeLevelMenu.indexOf(target)>-1){
 				$('#'+target).addClass("active").parent('.sub-menu').show().parent('li').addClass("active").find(':first').find('.arrow').addClass("open").parent().parent().parent(".sub-menu").show().parent('li').addClass("active").find(':first').append('<span class="selected"></span>').find('.arrow').addClass("open");
 			}else{

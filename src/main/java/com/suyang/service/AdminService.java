@@ -2,32 +2,23 @@ package com.suyang.service;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import utils.CreateMD5;
 import utils.IDGenerator;
 
-import com.suyang.common.HirFactory;
 import com.suyang.dao.AdminMapper;
 import com.suyang.model.Admin;
 
 @Service
 public class AdminService {
 
-//	private SessionFactory sessionFactory = HirFactory.sessionFactory;
-	
 	@Autowired
 	private AdminMapper adminMapper;
 	
 	public List<Admin> getAdminList(){
-//		return adminMapper.getAdminList();
-//		Session session = sessionFactory.openSession();
-//		List<Admin> admins = session.createQuery("from HibAdmin").list();
-//		session.close();
-//		return admins;
-		return null;
+		return adminMapper.getAdminList();
 	}
 	
 	public Long addAdmin(Admin admin){

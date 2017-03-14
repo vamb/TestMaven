@@ -8,8 +8,8 @@
 	response.setHeader("Cache-Control","no-cache");
 	response.setDateHeader("Expires",0);
 %> --%>
-<div class="header navbar navbar-inverse navbar-fixed-top">
-	<div class="navbar-inner">
+<div class="header navbar navbar-inverse navbar-fixed-top" style="width:100% !important;">
+	<div class="navbar-inner">  
 		<div class="container-fluid" style="width:100%;">
 			<a class="brand" href="<c:url value="/home"/>">
 				<img src="<c:url value="/page/media/image/logo.png"/>" alt="logo"/>

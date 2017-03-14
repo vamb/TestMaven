@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suyang.dao.QuestionMapper">
+
+	<resultMap id="baseMap" type="com.suyang.model.Question">
+		<result column="id" property="id" jdbcType="BIGINT"/>
+		<result column="sury_id" property="suryId" jdbcType="BIGINT"/>
+		<result column="qust_name" property="qustName" />
+		<result column="qust_type" property="qustType" />
+		<result column="sorting" property="sorting" />
+	</resultMap>
+
+	<select id="getQuestionList" resultMap="baseMap">
+		select * from tbl_question where deleted = 0
+	</select>
+	
+	<select id="getQustById" resultMap="baseMap">
+		select * from tbl_question where id = #{qustId}
+	</select>
+	
+	<select id="getQuestionListByServeyId" resultMap="baseMap">
+		select * from tbl_question where sury_id = #{surveyId} and deleted != 1 order by sorting
+	</select>
+	
+	<update id="updateQuestion" parameterType="com.suyang.model.Question" >
+		update tbl_question
+		<set >
+			<if test="qustName != null" >
+				qust_name = #{qustName},
+			</if>
+			<if test="qustType != null" >
+				qust_type = #{qustType},
+			</if>
+			<if test="sorting != null" >
+				sorting = #{sorting},
+			</if>
+			<if test="deleted != null" >
+				deleted = #{deleted},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<insert id="insertQuestion">
+		INSERT INTO tbl_question (
+			id,
+			sury_id,
+			qust_name,
+			qust_type,
+			sorting,
+			deleted
+		)values(
+			#{id},
+			#{suryId},
+			#{qustName},
+			#{qustType},
+			#{sorting},
+			#{deleted}
+		)
+	</insert>
+
+</mapper>

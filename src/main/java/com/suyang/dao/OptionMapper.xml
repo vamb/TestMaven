@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suyang.dao.OptionMapper">
+
+	<resultMap id="baseMap" type="com.suyang.model.Option">
+		<result column="id" property="id" jdbcType="BIGINT"/>
+		<result column="qust_id" property="qustId" jdbcType="BIGINT"/>
+		<result column="optn_name" property="optnName" />
+		<result column="sorting" property="sorting" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<select id="getOptionList" resultMap="baseMap">
+		select * from tbl_option where deleted = 0
+	</select>
+	
+	<select id="getOptnById" resultMap="baseMap">
+		select * from tbl_option where id = #{optnId}
+	</select>
+	
+	<select id="getOptionsByQustId" resultMap="baseMap">
+		select * from tbl_option where qust_id = #{qustId} and deleted != 1 order by sorting
+	</select>
+	
+	<select id="getMaxSortingofThisQust" resultType="java.lang.Integer">
+		select max(sorting) from tbl_option where deleted != 1 and qust_id = #{qustId}
+	</select>
+	
+	<insert id="insertOption">
+		INSERT INTO tbl_option (
+			id,
+			qust_id,
+			optn_name,
+			sorting,
+			deleted
+		)values(
+			#{id},
+			#{qustId},
+			#{optnName},
+			#{sorting},
+			#{deleted}
+		)
+	</insert>
+	
+	<update id="updateOption" parameterType="com.suyang.model.Option" >
+		update tbl_option
+		<set >
+				optn_name = #{optnName},
+			<if test="sorting != null" >
+				sorting = #{sorting},
+			</if>
+			<if test="deleted != null" >
+				deleted = #{deleted},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<update id="deleteoptionById" parameterType="com.suyang.model.Option" >
+		update tbl_option set deleted = 1 where id = #{optnId}
+	</update>
+	
+</mapper>

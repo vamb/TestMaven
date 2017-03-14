@@ -66,6 +66,19 @@
 			</li>
 		</ul>
 	</li>
+	
+	<li class="" type="left">
+		<a  href="javascript:;">
+			<i class="icon-th-large"></i>
+		<span class="title">调查问卷管理</span>
+		<span class="arrow"></span>
+		</a>
+		<ul class="sub-menu">
+			<li id="listSurveys">
+				<a href="${rc.contextPath}/survey/listSurveys">调查问卷列表</a>
+			</li>
+		</ul>
+	</li>
 
 </ul>
  

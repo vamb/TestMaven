@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suyang.dao.SurveyMapper">
+
+	<resultMap id="baseMap" type="com.suyang.model.Survey">
+		<result column="id" property="id" jdbcType="BIGINT"/>
+		<result column="sury_name" property="suryName" jdbcType="VARCHAR"/>
+		<result column="sorting" property="sorting" />
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<select id="getSurveyList" resultMap="baseMap">
+		select * from tbl_survey where deleted = 0 order by sorting
+	</select>
+	
+	<select id="getSurveyById" resultMap="baseMap">
+		select * from tbl_survey where id = #{suryId}
+	</select>
+	
+	<select id="getMaxSorting" resultType="java.lang.Integer">
+		select max(sorting) from tbl_survey where deleted != 1
+	</select>
+	
+	<select id="checkSurveyNameUnique" resultType="java.lang.Boolean" parameterType="com.suyang.model.Survey">
+		select count(1) from tbl_survey where sury_name = #{suryName}
+		<if test="id != null" >
+			and id != #{id}
+		</if>
+	</select>
+	
+	<insert id="addSurvey">
+		INSERT INTO tbl_survey (
+			id,
+			sury_name,
+			sorting,
+			deleted
+		)values(
+			#{id},
+			#{suryName},
+			#{sorting},
+			#{deleted}
+		)
+	</insert>
+	
+	<update id="deleteSurvey" parameterType="java.lang.Long" >
+		update tbl_survey set deleted = 1 where id = #{surveyId}
+	</update>
+	
+	<update id="updateSurvey" parameterType="com.suyang.model.Survey" >
+		update tbl_survey
+		<set >
+			<if test="suryName != null" >
+				sury_name = #{suryName},
+			</if>
+			<if test="sorting != null" >
+				sorting = #{sorting},
+			</if>
+			<if test="deleted != null" >
+				deleted = #{deleted},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<resultMap id="BeanSurveyMap" type="com.suyang.bean.BeanSurvey">
+		<result column="id" property="id" jdbcType="BIGINT"/>
+		<result column="sury_name" property="suryName" jdbcType="VARCHAR"/>
+		<result column="sury_sorting" property="sorting" />
+		<result column="sury_deleted" property="deleted" />
+		<collection property="questions" javaType="list" ofType="com.suyang.bean.BeanQuestion">
+			<id property="id" column="question_id" />
+			<result property="suryId" column="question_sury_id" />
+			<result property="qustName" column="question_qust_name" />
+			<result property="qustType" column="question_qust_type" />
+			<result property="sorting" column="question_sorting" />
+			<result property="deleted" column="question_deleted" />
+			<collection property="options" javaType="list" ofType="com.suyang.model.Option">
+				<id property="id" column="option_id" />
+				<result property="qustId" column="option_qust_id" />
+				<result property="optnName" column="option_optn_name" />
+				<result property="sorting" column="option_sorting" />
+				<result property="deleted" column="option_deleted" />
+			</collection>
+		</collection>
+	</resultMap>
+	
+	<select id="getBeanSurveyById" resultMap="BeanSurveyMap">
+		select
+			sury.id,
+			sury.sury_name sury_name,
+			sury.sorting sury_sorting,
+			qust.id question_id,
+			qust.sury_id question_sury_id,
+			qust.qust_name question_qust_name,
+			qust.qust_type question_qust_type,
+			qust.sorting question_sorting,
+			optn.id option_id,
+			optn.qust_id option_qust_id,
+			optn.optn_name option_optn_name,
+			optn.sorting option_sorting
+		from(
+			select 
+				id,
+				sury_name,
+				sorting
+			from tbl_survey
+			where 
+				deleted = 0
+			and id = #{suryId}
+		) sury
+		left join(
+			select
+				id,
+				sury_id,
+				qust_name,
+				qust_type,
+				sorting
+			from tbl_question
+			where deleted = 0
+		) qust
+		on sury.id = qust.id
+		left join(
+			select
+				id,
+				qust_id,
+				optn_name,
+				sorting
+			from tbl_option
+			where deleted = 0
+		)optn
+		on qust.id = optn.id
+	</select>
+
+</mapper>
