@@ -7,6 +7,7 @@
 		<result column="name" property="name" jdbcType="VARCHAR"/>
 		<result column="password" property="password" />
 		<result column="level" property="level" />
+		<result column="email" property="email" />
 	</resultMap>
 
 	<select id="getAdminList" resultMap="baseMap">
