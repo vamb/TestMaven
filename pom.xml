@@ -7,8 +7,8 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>SpringMVC Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  <dependencies>
   
+  <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -165,7 +165,6 @@
 		<artifactId>mail</artifactId>
 		<version>1.4.1</version>
 	</dependency>
-	
   </dependencies>
   <build>
     <finalName>SpringMVC</finalName>

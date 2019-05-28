@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <classPathEntry location="/Users/suyang/.m2/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar" />
+  <context id="context1">
+    <jdbcConnection 
+    	connectionURL="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf8" 
+    	driverClass="com.mysql.jdbc.Driver" 
+    	password="vamb" 
+    	userId="root" 
+	/>
+    <javaModelGenerator 
+    	targetPackage="com.suyang.aDemo.template" 
+    	targetProject="/Users/suyang/Desktop/workspace/selfProject/source_code/TestMaven/src/main/java" 
+    />
+    <sqlMapGenerator 
+    	targetPackage="com.suyang.aDemo.template"
+    	targetProject="/Users/suyang/Desktop/workspace/selfProject/source_code/TestMaven/src/main/java" 
+	/>
+    <javaClientGenerator 
+    	targetPackage="com.suyang.aDemo.template" 
+     	targetProject="/Users/suyang/Desktop/workspace/selfProject/source_code/TestMaven/src/main/java" 
+    	type="XMLMAPPER" 
+	/>
+    <table schema="test" tableName="demo_admin">
+      <!-- <columnOverride column="???" property="???" /> -->
+    </table>
+  </context>
+</generatorConfiguration>
