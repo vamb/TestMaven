@@ -40,7 +40,7 @@
   	<table schema="test" tableName="demo_teacher_course">
     </table> -->
     
-  	<table schema="test" tableName="demo_user_admin">
+  	<table schema="test" tableName="demo_user_course">
       <!-- <columnOverride column="???" property="???" /> -->
     </table>
   </context>
