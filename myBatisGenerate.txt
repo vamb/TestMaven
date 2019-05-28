@@ -1,1 +1,4 @@
+https://www.cnblogs.com/lichenwei/p/4145696.html
+
+
 java -jar /Users/suyang/.m2/repository/org/mybatis/generator/mybatis-generator-core/1.3.2/mybatis-generator-core-1.3.2.jar -configfile /Users/suyang/Desktop/workspace/selfProject/source_code/TestMaven/src/main/resources/generatorConfig.xml  -overwrite
