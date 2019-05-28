@@ -22,7 +22,25 @@
      	targetProject="/Users/suyang/Desktop/workspace/selfProject/source_code/TestMaven/src/main/java" 
     	type="XMLMAPPER" 
 	/>
-    <table schema="test" tableName="demo_admin">
+    <!-- <table schema="test" tableName="demo_admin">
+    </table>
+    
+  	<table schema="test" tableName="demo_class">
+    </table>
+    
+  	<table schema="test" tableName="demo_course">
+    </table>
+    
+    <table schema="test" tableName="demo_student">
+    </table>
+    
+  	<table schema="test" tableName="demo_teacher">
+    </table>
+    
+  	<table schema="test" tableName="demo_teacher_course">
+    </table> -->
+    
+  	<table schema="test" tableName="demo_user_admin">
       <!-- <columnOverride column="???" property="???" /> -->
     </table>
   </context>
