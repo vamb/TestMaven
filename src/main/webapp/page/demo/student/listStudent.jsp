@@ -6,10 +6,10 @@
 	<head>
 	<title>listAuths</title>
 	</head>
-	<meta name="menu" content="listAuths"/>
+	<meta name="menu" content="listStudent"/>
 	<body>
 	
-	<h3 class="page-title">作者管理</h3>
+	<h3 class="page-title">Student Manager</h3>
 		
 		<ul class="breadcrumb">
 			<li>
@@ -18,7 +18,7 @@
 				<i class="icon-angle-right"></i>
 			</li>
 			<li>
-				<a href="${rc.contextPath}/auth/listAuths">Auth List</a>
+				<a href="${rc.contextPath}/stud/listStudent">Student List</a>
 			</li>
 		</ul>
 		
@@ -28,7 +28,7 @@
 			</div>
 		</div>
 
-		<div class="span8">
+		<div class="span6">
 			<div class="portlet box green">
 				<div class="portlet-title">
 					<div class="caption">
@@ -46,22 +46,18 @@
 					<table class="table table-striped table-hover">
 						<thead>
 							<tr>
-								<th>#Index</th>
-								<th>userName</th>
-								<th>nickName</th>
-								<th class="hidden-480">password</th>
-								<th>avatar</th>
-								<th>status</th>
-								<th>email</th>
-								<th>Opertion</th>
+								<td>#Id</td>
+								<th>Name</th>
+								<th>Age</th>
+								<th>Class No.</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="auth" items="${list}" varStatus="loop">
+							<c:forEach var="stu" items="${list}" varStatus="loop">
 								<tr>
-									<td>${loop.index + 1 }</td>
-									<td>${auth.userName }</td>
-									<td>${auth.nickName }</td>
+									<td>${loop.index }</td>
+									<td>${stu.name }</td>
+									<td>${stu.age }</td>
 									<td>${auth.password }</td>
 									<td>${auth.avatar }</td>
 									<td>${'A' eq auth.status ?'Active':'inactive' }</td>
