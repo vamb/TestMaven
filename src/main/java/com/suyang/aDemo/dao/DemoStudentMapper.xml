@@ -18,6 +18,7 @@
     <result column="updated_dttm" property="updatedDttm" jdbcType="TIMESTAMP" />
     <result column="updated_by" property="updatedBy" jdbcType="BIGINT" />
   </resultMap>
+  
   <sql id="Example_Where_Clause" >
     <!--
       WARNING - @mbggenerated
@@ -363,4 +364,38 @@
       updated_by = #{updatedBy,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+	<resultMap id="DemoClassResultMap" type="com.suyang.aDemo.model.DemoClass" >
+    <id column="class_id" property="id" jdbcType="BIGINT" />
+    <result column="class_code" property="classCode" jdbcType="VARCHAR" />
+    <result column="class_grade" property="grade" jdbcType="INTEGER" />
+    <result column="class_is_active" property="isActive" jdbcType="BIT" />
+    <result column="class_created_dttm" property="createdDttm" jdbcType="TIMESTAMP" />
+    <result column="class_created_by" property="createdBy" jdbcType="BIGINT" />
+    <result column="class_updated_dttm" property="updatedDttm" jdbcType="TIMESTAMP" />
+    <result column="class_updated_by" property="updatedBy" jdbcType="BIGINT" />
+  </resultMap>
+  
+  <resultMap id="FullResultMap" type="com.suyang.aDemo.model.pojo.vo.StudentVO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="genter" property="genter" jdbcType="BIT" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="class_id" property="classId" jdbcType="BIGINT" />
+    <result column="is_active" property="isActive" jdbcType="BIGINT" />
+    <result column="created_dttm" property="createdDttm" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="BIGINT" />
+    <result column="updated_dttm" property="updatedDttm" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="BIGINT" />
+    <association property="demoClass" resultMap="DemoClassResultMap" />
+     <collection property="courseList" ofType="com.suyang.aDemo.model.DemoCourse" javaType="list">
+        <result column="course_id" property="id" />
+        <result column="course_name" property="courseName" />
+        <result column="course_desc" property="courseDesc" />
+    </collection>
+  </resultMap>
+  
+  <select id="getFullStudentList" resultMap="FullResultMap" >
+  		select * from test.demo_student where is_active = true
+  </select>
 </mapper>

@@ -87,6 +87,8 @@ public class StudentServiceImpl implements StudentService{
 			stuVO.setIsActive(stu.getIsActive());
 			stuList.add(stuVO);
 		}
+		
+		List<StudentVO> list2 = stuMapper.getFullStudentList();
 		return stuList;
 	}
 
