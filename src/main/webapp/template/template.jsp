@@ -43,7 +43,9 @@
 	<script type="text/javascript">
 		$(function(){
 			var target = $("#hiddenMenu").val();
-			var threeLevelMenu=["listArtilces","editArticle","newArticle","listAuths","editAuth","newAuth","listAdmins","editAdmin","newAdmin","listSurveys"];
+			var threeLevelMenu=["listArtilces","editArticle","newArticle","listAuths",
+				"listCourse", "listClass", "listStudent", "listTeacher", "listAdmin",
+				"editAuth","newAuth","listAdmins","editAdmin","newAdmin","listSurveys"];
 			if(threeLevelMenu.indexOf(target)>-1){
 				$('#'+target).addClass("active").parent('.sub-menu').show().parent('li').addClass("active").find(':first').find('.arrow').addClass("open").parent().parent().parent(".sub-menu").show().parent('li').addClass("active").find(':first').append('<span class="selected"></span>').find('.arrow').addClass("open");
 			}else{

@@ -6,10 +6,10 @@
 	<head>
 	<title>listAuths</title>
 	</head>
-	<meta name="menu" content="listStudent"/>
+	<meta name="menu" content="listCourse"/>
 	<body>
 	
-	<h3 class="page-title">Student Manager</h3>
+	<h3 class="page-title">Course Manager</h3>
 		
 		<ul class="breadcrumb">
 			<li>
@@ -18,13 +18,13 @@
 				<i class="icon-angle-right"></i>
 			</li>
 			<li>
-				<a href="${rc.contextPath}/stu/listStudent">Student List</a>
+				<a href="${rc.contextPath}/course/listCourse">Course List</a>
 			</li>
 		</ul>
 		
 		<div style="width:100%;margin-bottom:10px;">
 			<div  style="margin-left:30px;">
-				<a href="javascript:void(0)" onclick="newStudent()"><span>Add New</span></a>
+				<a href="javascript:void(0)" onclick="newCourse()"><span>Add New</span></a>
 			</div>
 		</div>
 
@@ -47,23 +47,21 @@
 						<thead>
 							<tr>
 								<td>#Id</td>
-								<th>Name</th>
-								<th>Age</th>
-								<th>Class No.</th>
+								<th>Course Name</th>
+								<th>Course Desc</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="stu" items="${list}" varStatus="loop">
+							<c:forEach var="curs" items="${list}" varStatus="loop">
 								<tr>
 									<td>${loop.index + 1}</td>
-									<td>${stu.name }</td>
-									<td>${stu.age }</td>
-									<td>${stu.demoClass.classCode }</td>
+									<td>${curs.courseName }</td>
+									<td>${curs.courseDesc }</td>
 									<td>
-										<span><a class="tableModify" onclick="modifyStudent('${stu.id }')" href="javascript:void(0)">modify</a></span>
+										<span><a class="tableModify" onclick="modifyCourse('${curs.id }')" href="javascript:void(0)">modify</a></span>
 										<span>|</span>
-										<span><a class="tableDelete" onclick="deleteStudent('${stu.id }')" href="javascript:void(0)">delete</a></span>
+										<span><a class="tableDelete" onclick="deleteCourse('${curs.id }')" href="javascript:void(0)">delete</a></span>
 									</td>
 								</tr>
 							</c:forEach>
@@ -81,21 +79,21 @@
 				
 			});
 			
-			function modifyStudent(authId){
-				$("#hiddenId").val(authId);
-				$("#hiddenForm").attr("action","${rc.contextPath}/auth/editAuth");
+			function modifyCourse(cursId){
+				$("#hiddenId").val(cursId);
+				$("#hiddenForm").attr("action","${rc.contextPath}/course/editCourse");
 				$("#hiddenForm").submit();
 			}
 			
-			function deleteStudent(authId){
-				$("#hiddenId").val(authId);
-				$("#hiddenForm").attr("action","${rc.contextPath}/auth/deleteAuth");
+			function deleteCourse(cursId){
+				$("#hiddenId").val(cursId);
+				$("#hiddenForm").attr("action","${rc.contextPath}/course/deleteCourse");
 				$("#hiddenForm").submit();
 			}
 			
-			function newStudent(){
+			function newCourse(){
 				$("#hiddenId").val("");
-				$("#hiddenForm").attr("action","${rc.contextPath}/auth/editAuth");
+				$("#hiddenForm").attr("action","${rc.contextPath}/course/editCourse");
 				$("#hiddenForm").submit();
 			}
 			
