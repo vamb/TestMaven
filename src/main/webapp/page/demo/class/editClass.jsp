@@ -49,78 +49,25 @@
 		<span id="backId" style="display:none;" >${cclass.id }</span>
 		<form id="inputForm" style="width:100%" role="form">
 			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
+				<input type="hidden" name="id" value="${cclass.id }" />
+				<input type="hidden" name="isActive" value="${cclass.isActive }" />
 				<div class="self_label">
 					<div style="">class code:</div>
 				</div>
 				<div style="width:50px;float:left;text-algin:left;">
 					<div style="">
-						<input type="text" name="" value="${cclass.classCode }" id="" />
+						<input type="text" name="classCode" value="${cclass.classCode }" id="" />
 					</div>
 				</div>
 			</div>
 			
 			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
-					<div style="">nickName:</div>
+					<div style="">Grade:</div>
 				</div>
 				<div style="width:50px;float:left;text-algin:left;">
 					<div style="">
-						<input type="text" name="" value="${auth.nickName }" id="" />
-					</div>
-				</div>
-			</div>
-			
-			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">password:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="${auth.password }" id="" onchange="passCheck(this)"/>
-					</div>
-				</div>
-			</div>
-			
-				<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">confirm pass:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="" id="" onchange="confirmCheck(this)"/>
-					</div>
-				</div>
-			</div>
-			
-			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">avatar:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="${auth.avatar }" id="" />
-					</div>
-				</div>
-			</div>
-			
-			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">status:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="${auth.status }" id="" />
-					</div>
-				</div>
-			</div>
-			
-			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">email:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="${auth.email }" id="" />
+						<input type="number" name="grade" value="${cclass.grade }" id="" />
 					</div>
 				</div>
 			</div>
@@ -135,28 +82,28 @@
 		</div>
 		
 		<form id="hiddenForm" action="" method="post">
-			<input type="hidden" id="hiddenId" name="id" value="${auth.id }" />
+			<input type="hidden" id="hiddenId" name="id" value="${cclass.id }" />
 		</form>
 		<script type="text/javascript">
 			
 			function loadCurrend(){
-				$("#hiddenForm").attr("action", "${rc.contextPath}/auth/editAuth");
+				$("#hiddenForm").attr("action", "${rc.contextPath}/cclass/editClass");
 				$("#hiddenForm").submit();
 			}
 			
 			function submitAction(){
-				$("#inputForm").attr("action", "${rc.contextPath}/auth/saveAuth");
+				$("#inputForm").attr("action", "${rc.contextPath}/cclass/saveClass");
 				$("#inputForm").submit();
 			}
 			
 			function resetAction(){
 				$("#hiddenId").val($("#backId").text());
-				$("#hiddenForm").attr("action", "${rc.contextPath}/auth/editAuth");
+				$("#hiddenForm").attr("action", "${rc.contextPath}/cclass/editClass");
 				$("#hiddenForm").submit();
 			}
 			
 			function cancelAction(){
-				$("#inputForm").attr("action", "${rc.contextPath}/auth/listAuths");
+				$("#inputForm").attr("action", "${rc.contextPath}/cclass/listClass");
 				$("#inputForm").submit();
 			}
 			

@@ -33,11 +33,18 @@ public class ClassServiceImpl implements CClassService{
 
 	public void insertDemoClass(DemoClass dClass) {
 		dClass.setId(IDGenerator.generateId());
+		dClass.setIsActive(true);
 		classMapper.insert(dClass);
 	}
 
 	public void deleteDemoClass(DemoClass dClass) {
 		classMapper.deleteByPrimaryKey(dClass.getId());
+	}
+
+	public void logicDeleteDemoClass(DemoClass dClass) {
+		dClass = classMapper.selectByPrimaryKey(dClass.getId());
+		dClass.setIsActive(false);
+		classMapper.updateByPrimaryKey(dClass);
 	}
 
 }

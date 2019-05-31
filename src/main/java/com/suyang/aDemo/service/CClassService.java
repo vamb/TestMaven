@@ -16,4 +16,6 @@ public interface CClassService {
 
 	void deleteDemoClass(DemoClass dClass);
 
+	void logicDeleteDemoClass(DemoClass dClass);
+
 }

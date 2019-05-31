@@ -27,7 +27,6 @@ public class ClassController {
 	public String editClass(Model model, DemoClass dClass){
 		if(dClass != null && dClass.getId()!= null) {
 			try {
-				classSrv.updateClassDetail(dClass);
 				DemoClass result = classSrv.getDClassById(dClass.getId());
 				model.addAttribute("cclass", result);
 			}catch(Exception e) {
@@ -39,8 +38,10 @@ public class ClassController {
 	
 	@RequestMapping(value = "/saveClass")
 	public String saveStu(Model model, DemoClass dClass){
-		if(dClass != null && dClass.getId() != null){
+		if(dClass != null && dClass.getId() == null){
 			classSrv.insertDemoClass(dClass);
+			DemoClass result = classSrv.getDClassById(dClass.getId());
+			model.addAttribute("cclass", result);
 			return "/page/demo/class/editClass";
 		}else{
 			classSrv.updateClassDetail(dClass);
@@ -57,7 +58,7 @@ public class ClassController {
 	
 	@RequestMapping(value = "/deleteClass")
 	public String deleteStu(Model model, DemoClass dClass){
-		classSrv.deleteDemoClass(dClass);
+		classSrv.logicDeleteDemoClass(dClass);
 		List<DemoClass> list = classSrv.getClassList();
 		model.addAttribute("list",list);
 		return "/page/demo/class/listClass";
