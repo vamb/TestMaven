@@ -89,7 +89,7 @@ public class StudentServiceImpl implements StudentService{
 		}
 		
 		List<StudentVO> list2 = stuMapper.getFullStudentList();
-		return stuList;
+		return list2;
 	}
 
 	public StudentVO getFullStudentById(Long id) {

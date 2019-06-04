@@ -18,7 +18,7 @@
 				<i class="icon-angle-right"></i>
 			</li>
 			<li>
-				<a href="${rc.contextPath}/stu/listStudent">Student List</a>
+				<a href="${rc.contextPath}/stu/listStu">Student List</a>
 			</li>
 		</ul>
 		
@@ -83,19 +83,19 @@
 			
 			function modifyStudent(authId){
 				$("#hiddenId").val(authId);
-				$("#hiddenForm").attr("action","${rc.contextPath}/auth/editAuth");
+				$("#hiddenForm").attr("action","${rc.contextPath}/stu/editStu");
 				$("#hiddenForm").submit();
 			}
 			
 			function deleteStudent(authId){
 				$("#hiddenId").val(authId);
-				$("#hiddenForm").attr("action","${rc.contextPath}/auth/deleteAuth");
+				$("#hiddenForm").attr("action","${rc.contextPath}/stu/deleteStu");
 				$("#hiddenForm").submit();
 			}
 			
 			function newStudent(){
 				$("#hiddenId").val("");
-				$("#hiddenForm").attr("action","${rc.contextPath}/auth/editAuth");
+				$("#hiddenForm").attr("action","${rc.contextPath}/stu/editStu");
 				$("#hiddenForm").submit();
 			}
 			
