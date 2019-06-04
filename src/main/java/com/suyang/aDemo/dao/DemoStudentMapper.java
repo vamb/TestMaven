@@ -97,4 +97,6 @@ public interface DemoStudentMapper {
     int updateByPrimaryKey(DemoStudent record);
     
     List<StudentVO> getFullStudentList();
+    
+    StudentVO getFullStudentById(Long id);
 }

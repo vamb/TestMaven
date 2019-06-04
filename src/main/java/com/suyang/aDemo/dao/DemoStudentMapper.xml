@@ -422,4 +422,33 @@
 		        and cla.is_active = true
 		        and cur.is_active = true
   </select>
+  
+  <select id="getFullStudentById" resultMap="FullResultMap" >
+  		SELECT 
+		    stu.id id,
+		    stu.genter genter,
+		    stu.age age,
+		    stu.name name,
+		    cla.id class_id,
+		    cla.class_code class_code,
+		    cla.grade class_grade,
+		    cur.id course_id,
+		    cur.course_name course_name,
+		    cur.course_desc course_desc
+		FROM
+		    demo_student stu
+		        INNER JOIN
+		    demo_class cla
+		        INNER JOIN
+		    demo_course cur
+		        INNER JOIN
+		    demo_user_course ucur ON stu.class_id = cla.id
+		        AND cur.id = ucur.course_id
+		        AND ucur.user_id = stu.id
+		        AND ucur.user_type = FALSE
+		        where stu.is_active = true
+		        and cla.is_active = true
+		        and cur.is_active = true
+		   	where stu.id = #{id,jdbcType=BIGINT}
+  </select>
 </mapper>
