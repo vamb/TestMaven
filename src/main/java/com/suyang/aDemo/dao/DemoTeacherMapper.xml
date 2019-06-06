@@ -330,4 +330,79 @@
       updated_dttm = #{updatedDttm,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  <resultMap id="FullResultMap" type="com.suyang.aDemo.model.pojo.vo.TeacherVO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="genter" property="genter" jdbcType="BIT" />
+    <result column="is_active" property="isActive" jdbcType="BIT" />
+    <result column="created_by" property="createdBy" jdbcType="BIGINT" />
+    <result column="created_dttm" property="createdDttm" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="BIGINT" />
+    <result column="updated_dttm" property="updatedDttm" jdbcType="TIMESTAMP" />
+    <collection property="classList" ofType="com.suyang.aDemo.model.pojo.vo.ClassVO" javaType="list">
+        <result column="class_id" property="id" />
+        <result column="class_code" property="classCode" />
+        <result column="class_grade" property="grade" />
+        <result column="teacher_type" property="teacherType" />
+    </collection>
+    <collection property="courseList" ofType="com.suyang.aDemo.model.DemoCourse" javaType="list">
+        <result column="course_id" property="id" />
+        <result column="course_name" property="courseName" />
+        <result column="course_desc" property="courseDesc" />
+    </collection>
+  </resultMap>
+  
+  <select id="getFullTeacherList" resultMap="FullResultMap">
+	  	SELECT 
+	    dt.id id,
+	    dt.name name,
+	    dt.genter genter,
+	    dcla.id class_id,
+		dtc.teacher_type teacher_type,
+	    dcla.class_code class_code,
+	    dcla.grade class_grade,
+	    dcou.id course_id,
+	    dcou.course_name course_name,
+	    dcou.course_desc course_desc
+	FROM
+	    demo_teacher dt
+	        LEFT JOIN
+	    demo_teacher_class dtc ON dt.id = dtc.teacher_id
+	        LEFT JOIN
+	    demo_class dcla ON dtc.class_id = dcla.id and dcla.is_active = true
+	        LEFT JOIN
+	    demo_user_course duc ON dt.id = duc.user_id
+	        LEFT JOIN
+	    demo_course dcou ON duc.course_id = dcou.id  and dcou.is_active = true
+	        AND duc.user_type = TRUE
+	        where dt.is_active = true
+  </select>
+ 
+   <select id="getFullTeacherById" resultMap="FullResultMap" parameterType="java.lang.Long">
+	  	SELECT 
+	    dt.id id,
+	    dt.name name,
+	    dt.genter genter,
+	    dcla.id class_id,
+		dtc.teacher_type teacher_type,
+	    dcla.class_code class_code,
+	    dcla.grade class_grade,
+	    dcou.id course_id,
+	    dcou.course_name course_name,
+	    dcou.course_desc course_desc
+	FROM
+	    demo_teacher dt
+	        LEFT JOIN
+	    demo_teacher_class dtc ON dt.id = dtc.teacher_id
+	        LEFT JOIN
+	    demo_class dcla ON dtc.class_id = dcla.id and dcla.is_active = true
+	        LEFT JOIN
+	    demo_user_course duc ON dt.id = duc.user_id
+	        LEFT JOIN
+	    demo_course dcou ON duc.course_id = dcou.id  and dcou.is_active = true
+	        AND duc.user_type = TRUE
+	        where dt.is_active = true
+	        AND dt.id = #{id,jdbcType=BIGINT}
+  </select>
 </mapper>

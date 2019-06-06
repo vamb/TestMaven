@@ -94,4 +94,6 @@ public interface DemoTeacherClassMapper {
      * @mbggenerated Tue May 28 19:03:27 SGT 2019
      */
     int updateByPrimaryKey(DemoTeacherClass record);
+    
+    void deleteByTeacherId(Long id);
 }

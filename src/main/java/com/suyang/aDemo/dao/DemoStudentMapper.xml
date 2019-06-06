@@ -365,7 +365,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   
-	<resultMap id="DemoClassResultMap" type="com.suyang.aDemo.model.DemoClass" >
+  <resultMap id="DemoClassResultMap" type="com.suyang.aDemo.model.DemoClass" >
     <id column="class_id" property="id" jdbcType="BIGINT" />
     <result column="class_code" property="classCode" jdbcType="VARCHAR" />
     <result column="class_grade" property="grade" jdbcType="INTEGER" />

@@ -12,9 +12,9 @@ import com.suyang.aDemo.dao.DemoCourseMapper;
 import com.suyang.aDemo.dao.DemoStudentExample;
 import com.suyang.aDemo.dao.DemoStudentMapper;
 import com.suyang.aDemo.dao.DemoUserCourseMapper;
-import com.suyang.aDemo.model.DemoClass;
 import com.suyang.aDemo.model.DemoCourse;
 import com.suyang.aDemo.model.DemoStudent;
+import com.suyang.aDemo.model.DemoUserCourse;
 import com.suyang.aDemo.model.pojo.vo.StudentVO;
 import com.suyang.aDemo.service.StudentService;
 import com.suyang.aDemo.utils.Constant;
@@ -50,19 +50,25 @@ public class StudentServiceImpl implements StudentService{
 		return stuMapper.getFullStudentById(id);
 	}
 
+	@Transactional
 	public void insertFullStudent(StudentVO stuVO) {
-		stuVO.setId(IDGenerator.generateId());
-		DemoClass demoClass = stuVO.getDemoClass();
+		DemoStudent demoStu = new DemoStudent();
+		demoStu.setId(IDGenerator.generateId());
+		demoStu.setAge(stuVO.getAge());
+		demoStu.setName(stuVO.getName());
+		demoStu.setClassId(stuVO.getDemoClass().getId());
+		demoStu.setIsActive(Constant.TRUE);
+		stuMapper.insertSelective(demoStu);
+		
 		List<DemoCourse> courseList = stuVO.getCourseList();
-		
-		demoClass.setId(IDGenerator.generateId());
-		demoClass.setIsActive(Constant.TRUE);
-		classMapper.insertSelective(demoClass);
-		
+		DemoUserCourse userCourse = null;
 		for(DemoCourse course: courseList) {
-			course.setId(IDGenerator.generateId());
-			course.setIsActive(Constant.TRUE);
-			courseMapper.insertSelective(course);
+			userCourse = new DemoUserCourse();
+			userCourse.setId(IDGenerator.generateId());
+			userCourse.setUserId(stuVO.getId());
+			userCourse.setUserType(Constant.USER_COURSE_STUDENT);
+			userCourse.setCourseId(course.getId());
+			userCourseMapper.insertSelective(userCourse);
 		}
 	}
 
@@ -76,10 +82,15 @@ public class StudentServiceImpl implements StudentService{
 			stuMapper.updateByPrimaryKeySelective(demoStu);
 			
 			List<DemoCourse> courseList = stuVO.getCourseList();
+			DemoUserCourse userCourse = null;
 			userCourseMapper.deleteByStuId(stuVO.getId());
 			for(DemoCourse course: courseList) {
-				course.setId(IDGenerator.generateId());
-				course.setIsActive(Constant.TRUE);
+				userCourse = new DemoUserCourse();
+				userCourse.setId(IDGenerator.generateId());
+				userCourse.setUserId(stuVO.getId());
+				userCourse.setUserType(Constant.USER_COURSE_STUDENT);
+				userCourse.setCourseId(course.getId());
+				userCourseMapper.insertSelective(userCourse);
 			}
 		}
 	}
