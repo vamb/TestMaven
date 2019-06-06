@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.suyang.aDemo.model.pojo.bo.StudentBO;
+import com.suyang.aDemo.model.DemoStudent;
 import com.suyang.aDemo.model.pojo.vo.StudentVO;
 import com.suyang.aDemo.service.StudentService;
 
@@ -25,10 +25,9 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value = "/editStu")
-	public String editStu(Model model, StudentBO stuBO){
-		StudentVO stuVO = new StudentVO();
-		if(stuBO != null && stuBO.getId() != null){
-			stuVO = stuSrv.getFullStudentById(stuBO.getId());
+	public String editStu(Model model, StudentVO stuVO){
+		if(stuVO != null && stuVO.getId() != null){
+			stuVO = stuSrv.getFullStudentById(stuVO.getId());
 		}
 		model.addAttribute("stu", stuVO);
 		return "/page/demo/student/editStudent";
@@ -36,7 +35,7 @@ public class StudentController {
 	
 	@RequestMapping(value = "/saveStu")
 	public String saveStu(Model model, StudentVO stuVO){
-		if(stuVO != null && stuVO.getId() != null){
+		if(stuVO != null && stuVO.getId() == null){
 			stuSrv.insertFullStudent(stuVO);
 			return "/page/demo/student/editStudent";
 		}else{
@@ -49,12 +48,15 @@ public class StudentController {
 	
 	@RequestMapping(value = "/newStu")
 	public String newStu(Model model){
-		return "/page/auth/newAuth";
+		return "/page/demo/student/newStudent";
 	}
 	
 	@RequestMapping(value = "/deleteStu")
-	public String deleteStu(Model model, StudentBO stuBO){
-		return "/page/auth/editAuth";
+	public String deleteStu(Model model, DemoStudent demoStudent){
+		stuSrv.logicDeleteStudent(demoStudent);
+		List<StudentVO> list = stuSrv.getStudentList();
+		model.addAttribute("list",list);
+		return "/page/demo/student/listStudent";
 	}
 	
 }
