@@ -59,12 +59,15 @@
 									<td>${loop.index }</td>
 									<td>${stu.name }</td>
 									<td>${stu.age }</td>
-									<td>${stu.genter }</td>
+									<td>
+										<c:if test="${stu.genter eq true }">Male</c:if>
+										<c:if test="${stu.genter ne true }">Female</c:if>
+									</td>
 									<td>${stu.demoClass.classCode }</td>
 									<td>
-										<span><a class="tableModify" onclick="modifyStudent'${stu.id }')" href="javascript:void(0)">modify</a></span>
+										<span><a class="tableModify" onclick="modifyStudent('${stu.id }')" href="javascript:void(0)">modify</a></span>
 										<span>|</span>
-										<span><a class="tableDelete" onclick="deleteStudent'${stu.id }')" href="javascript:void(0)">delete</a></span>
+										<span><a class="tableDelete" onclick="deleteStudent('${stu.id }')" href="javascript:void(0)">delete</a></span>
 									</td>
 								</tr>
 							</c:forEach>
@@ -77,10 +80,6 @@
 			</div>
 		</div>
 		<script type="text/javascript">
-			
-			$(document).ready(function(){
-				
-			});
 			
 			function modifyStudent(stuId){
 				$("#hiddenId").val(stuId);

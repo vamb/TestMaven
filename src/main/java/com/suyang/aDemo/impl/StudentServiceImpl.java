@@ -62,13 +62,15 @@ public class StudentServiceImpl implements StudentService{
 		
 		List<DemoCourse> courseList = stuVO.getCourseList();
 		DemoUserCourse userCourse = null;
-		for(DemoCourse course: courseList) {
-			userCourse = new DemoUserCourse();
-			userCourse.setId(IDGenerator.generateId());
-			userCourse.setUserId(stuVO.getId());
-			userCourse.setUserType(Constant.USER_COURSE_STUDENT);
-			userCourse.setCourseId(course.getId());
-			userCourseMapper.insertSelective(userCourse);
+		if(courseList != null && courseList.size()>0) {
+			for(DemoCourse course: courseList) {
+				userCourse = new DemoUserCourse();
+				userCourse.setId(IDGenerator.generateId());
+				userCourse.setUserId(stuVO.getId());
+				userCourse.setUserType(Constant.USER_COURSE_STUDENT);
+				userCourse.setCourseId(course.getId());
+				userCourseMapper.insertSelective(userCourse);
+			}
 		}
 	}
 
@@ -84,13 +86,15 @@ public class StudentServiceImpl implements StudentService{
 			List<DemoCourse> courseList = stuVO.getCourseList();
 			DemoUserCourse userCourse = null;
 			userCourseMapper.deleteByStuId(stuVO.getId());
-			for(DemoCourse course: courseList) {
-				userCourse = new DemoUserCourse();
-				userCourse.setId(IDGenerator.generateId());
-				userCourse.setUserId(stuVO.getId());
-				userCourse.setUserType(Constant.USER_COURSE_STUDENT);
-				userCourse.setCourseId(course.getId());
-				userCourseMapper.insertSelective(userCourse);
+			if(courseList != null && courseList.size()>0) {
+				for(DemoCourse course: courseList) {
+					userCourse = new DemoUserCourse();
+					userCourse.setId(IDGenerator.generateId());
+					userCourse.setUserId(stuVO.getId());
+					userCourse.setUserType(Constant.USER_COURSE_STUDENT);
+					userCourse.setCourseId(course.getId());
+					userCourseMapper.insertSelective(userCourse);
+				}
 			}
 		}
 	}

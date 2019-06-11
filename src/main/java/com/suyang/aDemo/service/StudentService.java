@@ -17,4 +17,6 @@ public interface StudentService {
 
 	void logicDeleteStudent(DemoStudent demoStudent);
 
+	List<DemoStudent> getDemoStudentList();
+
 }

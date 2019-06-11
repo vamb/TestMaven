@@ -48,6 +48,8 @@
 		</ul>
 		<span id="backId" style="display:none;" >${stu.id }</span>
 		<form id="inputForm" style="width:100%" role="form">
+			<input type="hidden" name="id" value="${stu.id }" />
+			<input type="hidden" name="isActive" value="${stu.isActive }" />
 			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
 					<div style="">Student Name:</div>
