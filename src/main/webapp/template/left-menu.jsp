@@ -114,7 +114,7 @@
 		</a>
 		<ul class="sub-menu">
 			<li id="listStudent">
-				<a href="${rc.contextPath}/student/listStudent">学生列表</a>
+				<a href="${rc.contextPath}/stu/listStu">学生列表</a>
 			</li>
 		</ul>
 	</li>

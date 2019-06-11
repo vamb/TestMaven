@@ -268,4 +268,8 @@
       teacher_type = #{teacherType,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  <delete id="deleteByTeacherId" parameterType="java.lang.Integer" >
+    delete from demo_teacher_class where teacher_id = #{id,jdbcType=BIGINT}
+  </delete>
 </mapper>

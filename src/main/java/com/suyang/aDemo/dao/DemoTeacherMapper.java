@@ -2,6 +2,7 @@ package com.suyang.aDemo.dao;
 
 import com.suyang.aDemo.dao.DemoTeacherExample;
 import com.suyang.aDemo.model.DemoTeacher;
+import com.suyang.aDemo.model.pojo.vo.TeacherVO;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -94,4 +95,8 @@ public interface DemoTeacherMapper {
      * @mbggenerated Tue May 28 16:37:59 SGT 2019
      */
     int updateByPrimaryKey(DemoTeacher record);
+    
+    List<TeacherVO> getFullTeacherList();
+    
+    TeacherVO getFullTeacherById(Long id);
 }

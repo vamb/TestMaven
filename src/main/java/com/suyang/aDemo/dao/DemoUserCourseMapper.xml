@@ -268,4 +268,11 @@
       user_type = #{userType,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  <delete id="deleteByStuId" parameterType="java.lang.Long" >
+    delete from demo_user_course where user_id = #{id,jdbcType=BIGINT} and user_type = false
+  </delete>
+  <delete id="deleteByTeacherId" parameterType="java.lang.Long" >
+    delete from demo_user_course where user_id = #{id,jdbcType=BIGINT} and user_type = true
+  </delete>
 </mapper>

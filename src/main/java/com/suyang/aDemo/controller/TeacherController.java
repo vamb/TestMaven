@@ -6,55 +6,58 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.suyang.aDemo.model.pojo.bo.StudentBO;
-import com.suyang.aDemo.model.pojo.vo.StudentVO;
-import com.suyang.aDemo.service.StudentService;
+import com.suyang.aDemo.model.DemoTeacher;
+import com.suyang.aDemo.model.pojo.vo.TeacherVO;
+import com.suyang.aDemo.service.TeacherService;
 
 @Controller
-@RequestMapping("/stu")
+@RequestMapping("/tch")
 public class TeacherController {
-//	
-//	@Autowired
-//	private StudentService stuSrv;
-//	
-//	@RequestMapping(value = "/listStu")
-//	public String listStu(Model model){
-//		List<StudentVO> list = stuSrv.getStudentList();
-//		model.addAttribute("list",list);
-//		return "/page/demo/student/listStudent";
-//	}
-//	
-//	@RequestMapping(value = "/editStu")
-//	public String editStu(Model model, StudentBO stuBO){
-//		StudentVO stuVO = new StudentVO();
-//		if(stuBO != null && stuBO.getId() != null){
-//			stuVO = stuSrv.getFullStudentById(stuBO.getId());
-//		}
-//		model.addAttribute("stu", stuVO);
-//		return "/page/demo/student/editStudent";
-//	}
-//	
-//	@RequestMapping(value = "/saveStu")
-//	public String saveStu(Model model, StudentVO stuVO){
-//		if(stuVO != null && stuVO.getId() != null){
-//			stuSrv.insertFullStudent(stuVO);
-//			return "/page/demo/student/editStudent";
-//		}else{
-//			stuSrv.updateFullStudent(stuVO);
-//			List<StudentVO> list = stuSrv.getStudentList();
-//			model.addAttribute("list",list);
-//			return "/page/demo/student/listStudent";
-//		}
-//	}
-//	
-//	@RequestMapping(value = "/newStu")
-//	public String newStu(Model model){
-//		return "/page/auth/newAuth";
-//	}
-//	
-//	@RequestMapping(value = "/deleteStu")
-//	public String deleteStu(Model model, StudentBO stuBO){
-//		return "/page/auth/editAuth";
-//	}
+	
+	@Autowired
+	private TeacherService tchSrv;
+	
+	@RequestMapping(value = "/listTch")
+	public String listTch(Model model){
+		List<DemoTeacher> list = tchSrv.getDemoTeacherList();
+		model.addAttribute("list",list);
+		return "/page/demo/teacher/listTeacher";
+	}
+	
+	@RequestMapping(value = "/editTch")
+	public String editTch(Model model, DemoTeacher demoTch){
+		TeacherVO tchVO = new TeacherVO();
+		if(demoTch != null && demoTch.getId() != null){
+			tchVO = tchSrv.getFullTeacherById(demoTch.getId());
+		}
+		model.addAttribute("tch", tchVO);
+		return "/page/demo/teacher/editTeacher";
+	}
+	
+	@RequestMapping(value = "/saveTch")
+	public String saveTch(Model model, TeacherVO tchVO){
+		if(tchVO != null && tchVO.getId() == null){
+			tchSrv.insertFullTeacher(tchVO);
+			return "/page/demo/teacher/editTeacher";
+		}else{
+			tchSrv.updateFullTeacher(tchVO);
+			List<TeacherVO> list = tchSrv.getFullTeacherList();
+			model.addAttribute("list",list);
+			return "/page/demo/teacher/listTeacher";
+		}
+	}
+	
+	@RequestMapping(value = "/newTch")
+	public String newStu(Model model){
+		return "/page/demo/teacher/editTeacher";
+	}
+	
+	@RequestMapping(value = "/deleteTch")
+	public String deleteTch(Model model, DemoTeacher demoTch){
+		tchSrv.logicDeleteTeacher(demoTch);
+		List<TeacherVO> list = tchSrv.getFullTeacherList();
+		model.addAttribute("list",list);
+		return "/page/demo/teacher/listTeacher";
+	}
 	
 }

@@ -94,4 +94,8 @@ public interface DemoUserCourseMapper {
      * @mbggenerated Tue May 28 18:41:25 SGT 2019
      */
     int updateByPrimaryKey(DemoUserCourse record);
+    
+    void deleteByStuId(Long id);
+    
+    void deleteByTeacherId(Long id);
 }
