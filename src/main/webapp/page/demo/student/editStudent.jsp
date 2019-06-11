@@ -5,7 +5,7 @@
 
 <html>
 <head>
-<title>editAuth</title>
+<title>editStudent</title>
 
 	<style type="text/css">
 		.self_label{
@@ -20,10 +20,10 @@
 	</style>
 	
 </head>
-<meta name="menu" content="listAuths"/>
+<meta name="menu" content="editStudent"/>
 
 	<body>
-		<h3 class="page-title">welcome to editAuth page</h2>
+		<h3 class="page-title">welcome to editStudent page</h2>
 		
 		<ul class="breadcrumb">
 			<li>
@@ -32,96 +32,68 @@
 				<i class="icon-angle-right"></i>
 			</li>
 			<li>
-				<a href="${rc.contextPath}/auth/listAuths">Auth List</a>
+				<a href="${rc.contextPath}/stu/listStu">Student List</a>
 				<i class="icon-angle-right"></i>
 			</li>
 			<li>
 				<a href="javascript:void(0)" onclick="loadCurrend()">
-					<c:if test="${not empty student.id }">
+					<c:if test="${not empty stu.id }">
 					edit student
 					</c:if>
-					<c:if test="${empty student.id }">
+					<c:if test="${empty stu.id }">
 					new student
 					</c:if>
 				</a>
 			</li>
 		</ul>
-		<span id="backId" style="display:none;" >${auth.id }</span>
+		<span id="backId" style="display:none;" >${stu.id }</span>
 		<form id="inputForm" style="width:100%" role="form">
 			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
-					<div style="">userName:</div>
+					<div style="">Student Name:</div>
 				</div>
 				<div style="width:50px;float:left;text-algin:left;">
 					<div style="">
-						<input type="text" name="" value="${auth.userName }" id="" />
+						<input type="text" name="name" value="${stu.name }" id="" />
 					</div>
 				</div>
 			</div>
 			
 			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
-					<div style="">nickName:</div>
+					<div style="">Age:</div>
 				</div>
 				<div style="width:50px;float:left;text-algin:left;">
 					<div style="">
-						<input type="text" name="" value="${auth.nickName }" id="" />
+						<input type="number" name="age" value="${stu.age }" id="" />
 					</div>
 				</div>
 			</div>
 			
 			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
-					<div style="">password:</div>
+					<div style="">Gender:</div>
 				</div>
 				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="${auth.password }" id="" onchange="passCheck(this)"/>
-					</div>
-				</div>
-			</div>
-			
-				<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">confirm pass:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="" id="" onchange="confirmCheck(this)"/>
-					</div>
+						<label class="radio">
+							<input type="radio" name="genter" value=true />Male
+						</label>
+						<label class="radio">
+							<input type="radio" name="genter" value=false />Female
+						</label>
 				</div>
 			</div>
 			
 			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
-					<div style="">avatar:</div>
+					<div style="">Class No.:</div>
 				</div>
 				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="${auth.avatar }" id="" />
-					</div>
-				</div>
-			</div>
-			
-			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">status:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="${auth.status }" id="" />
-					</div>
-				</div>
-			</div>
-			
-			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">email:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="${auth.email }" id="" />
-					</div>
+					<select class="medium m-wrap" tabindex="1" name="demoClass.id">
+						<c:forEach var="cclass" items="${classlist}" varStatus="loop">
+							<option value="${cclass.id}">${cclass.classCode}</option>
+						</c:forEach>
+					</select>
 				</div>
 			</div>
 		</form>
@@ -135,37 +107,29 @@
 		</div>
 		
 		<form id="hiddenForm" action="" method="post">
-			<input type="hidden" id="hiddenId" name="id" value="${auth.id }" />
+			<input type="hidden" id="hiddenId" name="id" value="${stu.id }" />
 		</form>
 		<script type="text/javascript">
 			
 			function loadCurrend(){
-				$("#hiddenForm").attr("action", "${rc.contextPath}/auth/editAuth");
+				$("#hiddenForm").attr("action", "${rc.contextPath}/stu/editStu");
 				$("#hiddenForm").submit();
 			}
 			
 			function submitAction(){
-				$("#inputForm").attr("action", "${rc.contextPath}/auth/saveAuth");
+				$("#inputForm").attr("action", "${rc.contextPath}/stu/saveStu");
 				$("#inputForm").submit();
 			}
 			
 			function resetAction(){
 				$("#hiddenId").val($("#backId").text());
-				$("#hiddenForm").attr("action", "${rc.contextPath}/auth/editAuth");
+				$("#hiddenForm").attr("action", "${rc.contextPath}/stu/editStu");
 				$("#hiddenForm").submit();
 			}
 			
 			function cancelAction(){
-				$("#inputForm").attr("action", "${rc.contextPath}/auth/listAuths");
+				$("#inputForm").attr("action", "${rc.contextPath}/stu/listStu");
 				$("#inputForm").submit();
-			}
-			
-			function passCheck(obj){
-				
-			}
-			
-			function confirmCheck(obj){
-				
 			}
 			
 		</script>

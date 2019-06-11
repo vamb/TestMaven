@@ -18,7 +18,7 @@
 				<i class="icon-angle-right"></i>
 			</li>
 			<li>
-				<a href="${rc.contextPath}/stu/listStudent">Student List</a>
+				<a href="${rc.contextPath}/stu/listStu">Student List</a>
 			</li>
 		</ul>
 		
@@ -49,21 +49,22 @@
 								<td>#Id</td>
 								<th>Name</th>
 								<th>Age</th>
+								<th>Gender</th>
 								<th>Class No.</th>
-								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="stu" items="${list}" varStatus="loop">
 								<tr>
-									<td>${loop.index + 1}</td>
+									<td>${loop.index }</td>
 									<td>${stu.name }</td>
 									<td>${stu.age }</td>
+									<td>${stu.genter }</td>
 									<td>${stu.demoClass.classCode }</td>
 									<td>
-										<span><a class="tableModify" onclick="modifyStudent('${stu.id }')" href="javascript:void(0)">modify</a></span>
+										<span><a class="tableModify" onclick="modifyStudent'${stu.id }')" href="javascript:void(0)">modify</a></span>
 										<span>|</span>
-										<span><a class="tableDelete" onclick="deleteStudent('${stu.id }')" href="javascript:void(0)">delete</a></span>
+										<span><a class="tableDelete" onclick="deleteStudent'${stu.id }')" href="javascript:void(0)">delete</a></span>
 									</td>
 								</tr>
 							</c:forEach>
@@ -81,21 +82,21 @@
 				
 			});
 			
-			function modifyStudent(authId){
-				$("#hiddenId").val(authId);
-				$("#hiddenForm").attr("action","${rc.contextPath}/auth/editAuth");
+			function modifyStudent(stuId){
+				$("#hiddenId").val(stuId);
+				$("#hiddenForm").attr("action","${rc.contextPath}/stu/editStu");
 				$("#hiddenForm").submit();
 			}
 			
-			function deleteStudent(authId){
-				$("#hiddenId").val(authId);
-				$("#hiddenForm").attr("action","${rc.contextPath}/auth/deleteAuth");
+			function deleteStudent(stuId){
+				$("#hiddenId").val(stuId);
+				$("#hiddenForm").attr("action","${rc.contextPath}/stu/deleteStu");
 				$("#hiddenForm").submit();
 			}
 			
 			function newStudent(){
 				$("#hiddenId").val("");
-				$("#hiddenForm").attr("action","${rc.contextPath}/auth/editAuth");
+				$("#hiddenForm").attr("action","${rc.contextPath}/stu/editStu");
 				$("#hiddenForm").submit();
 			}
 			
