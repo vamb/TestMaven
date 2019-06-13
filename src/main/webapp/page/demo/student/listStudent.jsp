@@ -56,7 +56,7 @@
 						<tbody>
 							<c:forEach var="stu" items="${list}" varStatus="loop">
 								<tr>
-									<td>${loop.index }</td>
+									<td>${loop.index + 1}</td>
 									<td>${stu.name }</td>
 									<td>${stu.age }</td>
 									<td>

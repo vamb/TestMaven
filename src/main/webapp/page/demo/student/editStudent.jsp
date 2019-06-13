@@ -99,7 +99,7 @@
 				</div>
 			</div>
 			
-			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
+			<%-- <div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
 					<div style="">Course Chosen:</div>
 				</div>
@@ -107,7 +107,7 @@
 					<c:forEach var="course" items="${courseList}" varStatus="loop">
 						<div style="width: 300px;height: 30px;">
 							<div style="width:30px; float:left;height:30px;line-height:30px;">
-								<Input class="courseClass" name="demoCourse.id" type="checkbox" value="${course.id}" />
+								<Input class="courseClass" name="courseList.id" type="checkbox" value="${course.id}" />
 							</div>
 							<div class="courseTxt" style=" float:left;height:30px;line-height:30px;">
 								${course.courseName} | ${course.courseDesc}
@@ -115,7 +115,7 @@
 						</div>
 					</c:forEach>
 				</div>
-			</div>
+			</div> --%>
 			
 		</form>
 		
@@ -138,15 +138,15 @@
 			}
 			
 			function submitAction(){
-				var checkboxSize = $(".courseClass").length;
+				/* var checkboxSize = $(".courseClass").length;
 				var courseList = [];
 				for(var i=0; i<checkboxSize; i++){
 					courseList.push({id: $(".courseClass").eq(i).val()})
-				}
+				} */
 			/* 	var stuMale = $("#stuMale").val();
 				var stuFemale = $("#stuFemale").val(); 
 				console.log("submitAction stuMale stuFemale", stuMale, stuFemale)
-				*/
+				
 				var stuObj = {
 					id: $("#stuId").val(),
 					name: $("#stuName").val(),
@@ -156,8 +156,8 @@
 					demoClass: {
 						id: $("#demoClass").val(),
 					}
-				}
-				console.log("checkboxlist", courseList, stuObj)
+				}*/
+				/* 	console.log("checkboxlist", courseList, stuObj)
 				$.ajax({
 					url : "${rc.contextPath}/stu/saveStu",
 					data : JSON.stringify(stuObj),
@@ -165,7 +165,7 @@
 					contentType: "application/json",
 					dataType : "json",
 					success : function(res) {
-			/* 			var str = '';
+					var str = '';
 						$(res.reserveFlowList).each(function(i, obj){
 							var responseCode = obj.responseCode;
 							var orderNo = obj.reserveFlow.orderNo;
@@ -179,13 +179,13 @@
 						$('#error2').dialog('open').dialog('center').dialog('setTitle', '提示');
 						$('#error2').html(str);
 						// 刷新列表
-						linkOrder.unfresh_LinkOrder(); */
+						linkOrder.unfresh_LinkOrder(); 
 						console.log("success")
 					}
-				});
+				});*/
 
-			/* 	$("#inputForm").attr("action", "${rc.contextPath}/stu/saveStu");
-				$("#inputForm").submit(); */
+			 	$("#inputForm").attr("action", "${rc.contextPath}/stu/saveStu");
+				$("#inputForm").submit();
 			}
 			
 			function resetAction(){

@@ -5,7 +5,7 @@
 
 <html>
 <head>
-<title>editAuth</title>
+<title>editTeacher</title>
 
 	<style type="text/css">
 		.self_label{
@@ -20,10 +20,10 @@
 	</style>
 	
 </head>
-<meta name="menu" content="listAuths"/>
+<meta name="menu" content="editTch"/>
 
 	<body>
-		<h3 class="page-title">welcome to editAuth page</h2>
+		<h3 class="page-title">welcome to editTch page</h2>
 		
 		<ul class="breadcrumb">
 			<li>
@@ -32,98 +32,35 @@
 				<i class="icon-angle-right"></i>
 			</li>
 			<li>
-				<a href="${rc.contextPath}/auth/listAuths">Auth List</a>
+				<a href="${rc.contextPath}/tch/listTch">Teacher List</a>
 				<i class="icon-angle-right"></i>
 			</li>
 			<li>
 				<a href="javascript:void(0)" onclick="loadCurrend()">
-					<c:if test="${not empty student.id }">
-					edit student
+					<c:if test="${not empty tch.id }">
+					edit teacher
 					</c:if>
-					<c:if test="${empty student.id }">
-					new student
+					<c:if test="${empty tch.id }">
+					new teacher
 					</c:if>
 				</a>
 			</li>
 		</ul>
-		<span id="backId" style="display:none;" >${auth.id }</span>
+		<span id="backId" style="display:none;" >${tch.id }</span>
 		<form id="inputForm" style="width:100%" role="form">
+			<input type="hidden" name="id" value="${tch.id }" />
+			<input type="hidden" name="isActive" value="${tch.isActive }" />
 			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
-					<div style="">userName:</div>
+					<div style="">Teacher Name:</div>
 				</div>
 				<div style="width:50px;float:left;text-algin:left;">
 					<div style="">
-						<input type="text" name="" value="${auth.userName }" id="" />
+						<input type="text" name="name" value="${tch.name }" id="" />
 					</div>
 				</div>
 			</div>
 			
-			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">nickName:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="${auth.nickName }" id="" />
-					</div>
-				</div>
-			</div>
-			
-			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">password:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="${auth.password }" id="" onchange="passCheck(this)"/>
-					</div>
-				</div>
-			</div>
-			
-				<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">confirm pass:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="" id="" onchange="confirmCheck(this)"/>
-					</div>
-				</div>
-			</div>
-			
-			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">avatar:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="${auth.avatar }" id="" />
-					</div>
-				</div>
-			</div>
-			
-			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">status:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="${auth.status }" id="" />
-					</div>
-				</div>
-			</div>
-			
-			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
-				<div class="self_label">
-					<div style="">email:</div>
-				</div>
-				<div style="width:50px;float:left;text-algin:left;">
-					<div style="">
-						<input type="text" name="" value="${auth.email }" id="" />
-					</div>
-				</div>
-			</div>
 		</form>
 		
 		<div style="width:100%;height:100px;background-color:#efefef;margin-top:30px;">
@@ -135,28 +72,28 @@
 		</div>
 		
 		<form id="hiddenForm" action="" method="post">
-			<input type="hidden" id="hiddenId" name="id" value="${auth.id }" />
+			<input type="hidden" id="hiddenId" name="id" value="${tch.id }" />
 		</form>
 		<script type="text/javascript">
 			
 			function loadCurrend(){
-				$("#hiddenForm").attr("action", "${rc.contextPath}/auth/editAuth");
+				$("#hiddenForm").attr("action", "${rc.contextPath}/tch/editTch");
 				$("#hiddenForm").submit();
 			}
 			
 			function submitAction(){
-				$("#inputForm").attr("action", "${rc.contextPath}/auth/saveAuth");
+				$("#inputForm").attr("action", "${rc.contextPath}/tch/saveTch");
 				$("#inputForm").submit();
 			}
 			
 			function resetAction(){
 				$("#hiddenId").val($("#backId").text());
-				$("#hiddenForm").attr("action", "${rc.contextPath}/auth/editAuth");
+				$("#hiddenForm").attr("action", "${rc.contextPath}/tch/editTch");
 				$("#hiddenForm").submit();
 			}
 			
 			function cancelAction(){
-				$("#inputForm").attr("action", "${rc.contextPath}/auth/listAuths");
+				$("#inputForm").attr("action", "${rc.contextPath}/tch/editTch");
 				$("#inputForm").submit();
 			}
 			

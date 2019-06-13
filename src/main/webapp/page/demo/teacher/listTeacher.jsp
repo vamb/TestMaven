@@ -4,12 +4,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
-	<title>listAuths</title>
+	<title>listTeacher</title>
 	</head>
-	<meta name="menu" content="listStudent"/>
+	<meta name="menu" content="listTeacher"/>
 	<body>
 	
-	<h3 class="page-title">Student Manager</h3>
+	<h3 class="page-title">Teacher Manager</h3>
 		
 		<ul class="breadcrumb">
 			<li>
@@ -18,13 +18,13 @@
 				<i class="icon-angle-right"></i>
 			</li>
 			<li>
-				<a href="${rc.contextPath}/stu/listStudent">Student List</a>
+				<a href="${rc.contextPath}/tch/listTch">Teacher List</a>
 			</li>
 		</ul>
 		
 		<div style="width:100%;margin-bottom:10px;">
 			<div  style="margin-left:30px;">
-				<a href="javascript:void(0)" onclick="newStudent()"><span>Add New</span></a>
+				<a href="javascript:void(0)" onclick="newTeacher()"><span>Add New</span></a>
 			</div>
 		</div>
 
@@ -48,22 +48,20 @@
 							<tr>
 								<td>#Id</td>
 								<th>Name</th>
-								<th>Age</th>
-								<th>Class No.</th>
+								<th>Gender</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="stu" items="${list}" varStatus="loop">
+							<c:forEach var="tech" items="${list}" varStatus="loop">
 								<tr>
 									<td>${loop.index + 1}</td>
-									<td>${stu.name }</td>
-									<td>${stu.age }</td>
-									<td>${stu.demoClass.classCode }</td>
+									<td>${tech.name }</td>
+									<td>${tech.genter }</td>
 									<td>
-										<span><a class="tableModify" onclick="modifyStudent('${stu.id }')" href="javascript:void(0)">modify</a></span>
+										<span><a class="tableModify" onclick="modifyTeacher('${tech.id }')" href="javascript:void(0)">modify</a></span>
 										<span>|</span>
-										<span><a class="tableDelete" onclick="deleteStudent('${stu.id }')" href="javascript:void(0)">delete</a></span>
+										<span><a class="tableDelete" onclick="deleteTeacher('${tech.id }')" href="javascript:void(0)">delete</a></span>
 									</td>
 								</tr>
 							</c:forEach>
@@ -81,21 +79,21 @@
 				
 			});
 			
-			function modifyStudent(authId){
-				$("#hiddenId").val(authId);
-				$("#hiddenForm").attr("action","${rc.contextPath}/auth/editAuth");
+			function modifyTeacher(techId){
+				$("#hiddenId").val(techId);
+				$("#hiddenForm").attr("action","${rc.contextPath}/tch/edittch");
 				$("#hiddenForm").submit();
 			}
 			
-			function deleteStudent(authId){
-				$("#hiddenId").val(authId);
-				$("#hiddenForm").attr("action","${rc.contextPath}/auth/deleteAuth");
+			function deleteTeacher(techId){
+				$("#hiddenId").val(techId);
+				$("#hiddenForm").attr("action","${rc.contextPath}/tch/deletetch");
 				$("#hiddenForm").submit();
 			}
 			
-			function newStudent(){
+			function newTeacher(){
 				$("#hiddenId").val("");
-				$("#hiddenForm").attr("action","${rc.contextPath}/auth/editAuth");
+				$("#hiddenForm").attr("action","${rc.contextPath}/tch/edittch");
 				$("#hiddenForm").submit();
 			}
 			
