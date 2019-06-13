@@ -4,12 +4,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.suyang.aDemo.model.DemoClass;
+import com.suyang.aDemo.model.DemoCourse;
 import com.suyang.aDemo.model.DemoStudent;
 import com.suyang.aDemo.model.pojo.vo.StudentVO;
 import com.suyang.aDemo.service.CClassService;
+import com.suyang.aDemo.service.CourseService;
 import com.suyang.aDemo.service.StudentService;
 
 @Controller
@@ -21,6 +25,9 @@ public class StudentController {
 	
 	@Autowired
 	private CClassService classSrv;
+	
+	@Autowired
+	private CourseService cosSrv;
 	
 	@RequestMapping(value = "/listStu")
 	public String listStu(Model model){
@@ -36,7 +43,9 @@ public class StudentController {
 			stuVO = stuSrv.getFullStudentById(stuVO.getId());
 		}
 		List<DemoClass> list = classSrv.getClassList();
+		List<DemoCourse> courseList = cosSrv.getDemoCourseList();
 		model.addAttribute("classlist", list);
+		model.addAttribute("courseList", courseList);
 		model.addAttribute("stu", stuVO);
 		return "/page/demo/student/editStudent";
 	}

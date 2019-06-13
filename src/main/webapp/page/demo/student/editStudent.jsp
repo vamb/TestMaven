@@ -48,15 +48,15 @@
 		</ul>
 		<span id="backId" style="display:none;" >${stu.id }</span>
 		<form id="inputForm" style="width:100%" role="form">
-			<input type="hidden" name="id" value="${stu.id }" />
-			<input type="hidden" name="isActive" value="${stu.isActive }" />
+			<input type="hidden" name="id" value="${stu.id }" id="stuId" />
+			<input type="hidden" name="isActive" value="${stu.isActive }" id="isActive" />
 			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
 				<div class="self_label">
 					<div style="">Student Name:</div>
 				</div>
 				<div style="width:50px;float:left;text-algin:left;">
 					<div style="">
-						<input type="text" name="name" value="${stu.name }" id="" />
+						<input type="text" name="name" value="${stu.name }" id="stuName" />
 					</div>
 				</div>
 			</div>
@@ -67,7 +67,7 @@
 				</div>
 				<div style="width:50px;float:left;text-algin:left;">
 					<div style="">
-						<input type="number" name="age" value="${stu.age }" id="" />
+						<input type="number" name="age" value="${stu.age }" id="stuAge" />
 					</div>
 				</div>
 			</div>
@@ -78,10 +78,10 @@
 				</div>
 				<div style="width:50px;float:left;text-algin:left;">
 						<label class="radio">
-							<input type="radio" name="genter" value=true />Male
+							<input type="radio" name="genter" value=true id="stuMale" />Male
 						</label>
 						<label class="radio">
-							<input type="radio" name="genter" value=false />Female
+							<input type="radio" name="genter" value=false id="stuFemale" />Female
 						</label>
 				</div>
 			</div>
@@ -91,13 +91,32 @@
 					<div style="">Class No.:</div>
 				</div>
 				<div style="width:50px;float:left;text-algin:left;">
-					<select class="medium m-wrap" tabindex="1" name="demoClass.id">
+					<select class="medium m-wrap" tabindex="1" name="demoClass.id" id="demoClass">
 						<c:forEach var="cclass" items="${classlist}" varStatus="loop">
 							<option value="${cclass.id}">${cclass.classCode}</option>
 						</c:forEach>
 					</select>
 				</div>
 			</div>
+			
+			<div style="width:100%; margin-bottom:20px;height:30px;width:250px;">
+				<div class="self_label">
+					<div style="">Course Chosen:</div>
+				</div>
+				<div style="width:50px;float:left;text-algin:left;">
+					<c:forEach var="course" items="${courseList}" varStatus="loop">
+						<div style="width: 300px;height: 30px;">
+							<div style="width:30px; float:left;height:30px;line-height:30px;">
+								<Input class="courseClass" name="demoCourse.id" type="checkbox" value="${course.id}" />
+							</div>
+							<div class="courseTxt" style=" float:left;height:30px;line-height:30px;">
+								${course.courseName} | ${course.courseDesc}
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+			
 		</form>
 		
 		<div style="width:100%;height:100px;background-color:#efefef;margin-top:30px;">
@@ -119,8 +138,54 @@
 			}
 			
 			function submitAction(){
-				$("#inputForm").attr("action", "${rc.contextPath}/stu/saveStu");
-				$("#inputForm").submit();
+				var checkboxSize = $(".courseClass").length;
+				var courseList = [];
+				for(var i=0; i<checkboxSize; i++){
+					courseList.push({id: $(".courseClass").eq(i).val()})
+				}
+			/* 	var stuMale = $("#stuMale").val();
+				var stuFemale = $("#stuFemale").val(); 
+				console.log("submitAction stuMale stuFemale", stuMale, stuFemale)
+				*/
+				var stuObj = {
+					id: $("#stuId").val(),
+					name: $("#stuName").val(),
+					age: $("#stuAge").val(),
+					isActive: $("#isActive").val(),
+					courseList: courseList,
+					demoClass: {
+						id: $("#demoClass").val(),
+					}
+				}
+				console.log("checkboxlist", courseList, stuObj)
+				$.ajax({
+					url : "${rc.contextPath}/stu/saveStu",
+					data : JSON.stringify(stuObj),
+					type : "POST",
+					contentType: "application/json",
+					dataType : "json",
+					success : function(res) {
+			/* 			var str = '';
+						$(res.reserveFlowList).each(function(i, obj){
+							var responseCode = obj.responseCode;
+							var orderNo = obj.reserveFlow.orderNo;
+							if (responseCode == 0) {
+								str += "订单号为"+ orderNo +"成功<br/>";
+							} else {
+								str += "订单号为"+ orderNo + obj.responseMsg +"<br/>"
+							}
+						});
+						
+						$('#error2').dialog('open').dialog('center').dialog('setTitle', '提示');
+						$('#error2').html(str);
+						// 刷新列表
+						linkOrder.unfresh_LinkOrder(); */
+						console.log("success")
+					}
+				});
+
+			/* 	$("#inputForm").attr("action", "${rc.contextPath}/stu/saveStu");
+				$("#inputForm").submit(); */
 			}
 			
 			function resetAction(){

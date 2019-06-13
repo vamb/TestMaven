@@ -56,7 +56,9 @@ public class StudentServiceImpl implements StudentService{
 		demoStu.setId(IDGenerator.generateId());
 		demoStu.setAge(stuVO.getAge());
 		demoStu.setName(stuVO.getName());
-		demoStu.setClassId(stuVO.getDemoClass().getId());
+		if(stuVO.getDemoClass() != null) {
+			demoStu.setClassId(stuVO.getDemoClass().getId());
+		}
 		demoStu.setIsActive(Constant.TRUE);
 		stuMapper.insertSelective(demoStu);
 		
