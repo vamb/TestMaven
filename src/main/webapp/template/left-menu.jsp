@@ -101,7 +101,7 @@
 		</a>
 		<ul class="sub-menu">
 			<li id="listTeacher">
-				<a href="${rc.contextPath}/teacher/listTeacher">教师列表</a>
+				<a href="${rc.contextPath}/tch/listTch">教师列表</a>
 			</li>
 		</ul>
 	</li>

@@ -57,23 +57,27 @@ public class TeacherServiceImpl implements TeacherService{
 		List<DemoCourse> courseList = tchVO.getCourseList();
 		
 		DemoTeacherClass tchClass = null;
-		for(ClassVO classVO: classList) {
-			tchClass = new DemoTeacherClass();
-			tchClass.setId(IDGenerator.generateId());
-			tchClass.setTeacherId(tchVO.getId());
-			tchClass.setClassId(classVO.getId());
-			tchClass.setTeacherType(classVO.getTeacherType());
-			tchClassMapper.insertSelective(tchClass);
+		if(classList != null && classList.size()>0) {
+			for(ClassVO classVO: classList) {
+				tchClass = new DemoTeacherClass();
+				tchClass.setId(IDGenerator.generateId());
+				tchClass.setTeacherId(tchVO.getId());
+				tchClass.setClassId(classVO.getId());
+				tchClass.setTeacherType(classVO.getTeacherType());
+				tchClassMapper.insertSelective(tchClass);
+			}
 		}
 		
 		DemoUserCourse userCourse = null;
-		for(DemoCourse course: courseList) {
-			userCourse = new DemoUserCourse();
-			userCourse.setId(IDGenerator.generateId());
-			userCourse.setCourseId(course.getId());
-			userCourse.setUserId(tchVO.getId());
-			userCourse.setUserType(Constant.USER_COURSE_TEACHER);
-			userCourseMapper.insertSelective(userCourse);
+		if(courseList != null && courseList.size()>0) {
+			for(DemoCourse course: courseList) {
+				userCourse = new DemoUserCourse();
+				userCourse.setId(IDGenerator.generateId());
+				userCourse.setCourseId(course.getId());
+				userCourse.setUserId(tchVO.getId());
+				userCourse.setUserType(Constant.USER_COURSE_TEACHER);
+				userCourseMapper.insertSelective(userCourse);
+			}
 		}
 	}
 
@@ -93,24 +97,28 @@ public class TeacherServiceImpl implements TeacherService{
 		
 		tchClassMapper.deleteByTeacherId(tchVO.getId());
 		DemoTeacherClass tchClass = null;
-		for(ClassVO classVO: classList) {
-			tchClass = new DemoTeacherClass();
-			tchClass.setId(IDGenerator.generateId());
-			tchClass.setTeacherId(tchVO.getId());
-			tchClass.setClassId(classVO.getId());
-			tchClass.setTeacherType(classVO.getTeacherType());
-			tchClassMapper.insertSelective(tchClass);
+		if(classList != null && classList.size()>0) {
+			for(ClassVO classVO: classList) {
+				tchClass = new DemoTeacherClass();
+				tchClass.setId(IDGenerator.generateId());
+				tchClass.setTeacherId(tchVO.getId());
+				tchClass.setClassId(classVO.getId());
+				tchClass.setTeacherType(classVO.getTeacherType());
+				tchClassMapper.insertSelective(tchClass);
+			}
 		}
 		
 		userCourseMapper.deleteByTeacherId(tchVO.getId());
 		DemoUserCourse userCourse = null;
-		for(DemoCourse course: courseList) {
-			userCourse = new DemoUserCourse();
-			userCourse.setId(IDGenerator.generateId());
-			userCourse.setCourseId(course.getId());
-			userCourse.setUserId(tchVO.getId());
-			userCourse.setUserType(Constant.USER_COURSE_TEACHER);
-			userCourseMapper.insertSelective(userCourse);
+		if(courseList != null && courseList.size()>0) {
+			for(DemoCourse course: courseList) {
+				userCourse = new DemoUserCourse();
+				userCourse.setId(IDGenerator.generateId());
+				userCourse.setCourseId(course.getId());
+				userCourse.setUserId(tchVO.getId());
+				userCourse.setUserType(Constant.USER_COURSE_TEACHER);
+				userCourseMapper.insertSelective(userCourse);
+			}
 		}
 	}
 

@@ -81,7 +81,7 @@
 			
 			function modifyTeacher(techId){
 				$("#hiddenId").val(techId);
-				$("#hiddenForm").attr("action","${rc.contextPath}/tch/edittch");
+				$("#hiddenForm").attr("action","${rc.contextPath}/tch/editTch");
 				$("#hiddenForm").submit();
 			}
 			
@@ -93,7 +93,7 @@
 			
 			function newTeacher(){
 				$("#hiddenId").val("");
-				$("#hiddenForm").attr("action","${rc.contextPath}/tch/edittch");
+				$("#hiddenForm").attr("action","${rc.contextPath}/tch/editTch");
 				$("#hiddenForm").submit();
 			}
 			
