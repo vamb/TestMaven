@@ -13,7 +13,7 @@
 			classpath*:applicationContext.xml
 		</param-value>
 	</context-param>
-	
+	<!-- ContextLoaderListener监听器的作用就是启动Web容器时，自动装配ApplicationContext的配置信息 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
